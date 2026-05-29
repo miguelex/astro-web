@@ -10,20 +10,20 @@
     "en": "15 years building robust, maintainable web software."
   },
   "summary": {
-    "es": "Ingeniero de software con más de 15 años de experiencia en desarrollo web fullstack, especializado en PHP y su ecosistema. Me apasiona escribir código limpio, diseñar arquitecturas sólidas y mantenerme al día con las tecnologías actuales. Disfruto resolviendo problemas complejos y entregando productos de calidad de principio a fin.",
-    "en": "Software engineer with 15+ years of experience in fullstack web development, specialized in PHP and its ecosystem. I am passionate about writing clean code, designing solid architectures and staying up to date with current technologies. I enjoy solving complex problems and delivering quality products end to end."
+    "es": "Especializado en PHP y su ecosistema, me apasiona escribir código limpio y diseñar arquitecturas sólidas que aguanten el paso del tiempo. Disfruto resolviendo problemas complejos, cuidando cada detalle y entregando productos de calidad de principio a fin, siempre con un ojo puesto en las tecnologías actuales.",
+    "en": "Specialized in PHP and its ecosystem, I am passionate about writing clean code and designing solid architectures that stand the test of time. I enjoy solving complex problems, caring about every detail and delivering quality products end to end, always keeping an eye on current technologies."
   },
   "location": {
-    "es": "España",
-    "en": "Spain"
+    "es": "Palos de la Frontera, Huelva · España",
+    "en": "Palos de la Frontera, Huelva · Spain"
   },
-  "email": "miguelexd@gmail.com",
+  "email": "migue@miguedelgado.dev",
   "cvFile": {
     "es": "/cv",
     "en": "/en/cv"
   },
   "social": {
-    "linkedin": "https://www.linkedin.com/in/tu-usuario",
-    "github": "https://github.com/tu-usuario"
+    "linkedin": "https://www.linkedin.com/in/miguelangeldelgadomarquez",
+    "github": "https://github.com/miguelex"
   }
 }

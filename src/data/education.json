@@ -1,28 +1,15 @@
 [
   {
-    "institution": "Universidad / Centro de Estudios",
+    "institution": "Universidad de Huelva",
     "degree": {
-      "es": "Ingeniería Informática",
-      "en": "Computer Science Engineering"
+      "es": "Grado en Ingeniería Informática · Ingeniería del Software",
+      "en": "Bachelor's Degree in Computer Engineering · Software Engineering"
     },
-    "start": "2006",
-    "end": "2010",
+    "start": "2013",
+    "end": "2015",
     "description": {
-      "es": "Formación en ingeniería del software, algoritmia, bases de datos y sistemas.",
-      "en": "Training in software engineering, algorithms, databases and systems."
-    }
-  },
-  {
-    "institution": "Formación Profesional",
-    "degree": {
-      "es": "Desarrollo de Aplicaciones Web (DAW)",
-      "en": "Web Application Development (DAW)"
-    },
-    "start": "2004",
-    "end": "2006",
-    "description": {
-      "es": "Base técnica en desarrollo web, programación y diseño de bases de datos.",
-      "en": "Technical foundation in web development, programming and database design."
+      "es": "Trabajo de Fin de Grado: «Aplicación del reconocimiento facial en el ámbito laboral», aplicando inteligencia artificial, defendido en 2023 con una calificación de 9. Todos los créditos superados; pendiente únicamente la acreditación del nivel B1 de idioma para la expedición del título.",
+      "en": "Final Degree Project: \"Facial recognition applied to the workplace\", using artificial intelligence, defended in 2023 with a grade of 9/10. All credits completed; only the B1 language accreditation remains for the degree to be issued."
     }
   }
 ]

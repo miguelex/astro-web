@@ -1,79 +1,87 @@
 [
   {
-    "company": "Empresa Actual S.L.",
+    "company": "Desarrollo y Digitalización Sectorial S.L.",
     "role": {
-      "es": "Desarrollador Fullstack Senior",
-      "en": "Senior Fullstack Developer"
+      "es": "Desarrollador Fullstack PHP",
+      "en": "Fullstack PHP Developer"
     },
-    "start": "2019",
+    "start": "2022",
     "end": null,
-    "location": { "es": "Remoto · España", "en": "Remote · Spain" },
+    "location": { "es": "Palos de la Frontera, Huelva · Presencial", "en": "Palos de la Frontera, Huelva · On-site" },
     "description": {
-      "es": "Desarrollo y mantenimiento de aplicaciones web de gran escala con PHP/Laravel y Vue.js, liderando decisiones técnicas y buenas prácticas en el equipo.",
-      "en": "Development and maintenance of large-scale web applications with PHP/Laravel and Vue.js, leading technical decisions and best practices within the team."
+      "es": "Desarrollo de módulos para NetAsesor, plataforma web dirigida a asesorías fiscales y laborales que integra control horario, protección de datos y gestión documental, entre otros.",
+      "en": "Development of modules for NetAsesor, a web platform for tax and labor consultancies that integrates time tracking, data protection and document management, among others."
     },
     "highlights": {
       "es": [
-        "Diseño de arquitectura de servicios y APIs REST.",
-        "Mejora del rendimiento reduciendo tiempos de carga un 40%.",
-        "Mentoring de desarrolladores junior."
+        "Responsable del módulo de control horario.",
+        "Puesta en marcha del módulo de protección de datos y documentación en la nube.",
+        "Mantenimiento de la web corporativa y resolución de incidencias de clientes.",
+        "Integración de modelos de IA actuales (Claude, Claude Code) en el flujo de trabajo."
       ],
       "en": [
-        "Service architecture and REST API design.",
-        "Performance improvements reducing load times by 40%.",
-        "Mentoring of junior developers."
+        "Owner of the time-tracking module.",
+        "Launched the data protection and cloud document management module.",
+        "Maintenance of the corporate website and resolution of client incidents.",
+        "Integration of current AI models (Claude, Claude Code) into the workflow."
       ]
     },
-    "tech": ["PHP", "Laravel", "Vue.js", "MySQL", "Docker", "Redis"]
+    "tech": ["PHP", "Symfony", "MySQL", "JavaScript", "HTML5", "CSS3", "Claude"]
   },
   {
-    "company": "Consultora Tecnológica",
+    "company": "Ubrisecurity",
     "role": {
-      "es": "Desarrollador Web",
-      "en": "Web Developer"
+      "es": "Desarrollador de Software",
+      "en": "Software Developer"
     },
-    "start": "2014",
-    "end": "2019",
-    "location": { "es": "Madrid, España", "en": "Madrid, Spain" },
+    "start": "03/2018",
+    "end": "11/2020",
+    "location": { "es": "Valverde del Camino, Huelva · Híbrido", "en": "Valverde del Camino, Huelva · Hybrid" },
     "description": {
-      "es": "Desarrollo de soluciones a medida para clientes de distintos sectores, desde e-commerce hasta intranets corporativas.",
-      "en": "Development of custom solutions for clients across sectors, from e-commerce to corporate intranets."
+      "es": "Webmaster y desarrollo de aplicaciones web y móviles, con implementación de webservices y soluciones de comercio electrónico.",
+      "en": "Webmaster and development of web and mobile applications, with webservices implementation and e-commerce solutions."
     },
     "highlights": {
       "es": [
-        "Implementación de plataformas e-commerce con Symfony.",
-        "Integración con pasarelas de pago y servicios externos."
+        "Desarrollo de aplicaciones Android.",
+        "Desarrollo de aplicaciones web.",
+        "Implementación de webservices.",
+        "Soluciones de comercio electrónico."
       ],
       "en": [
-        "Implementation of e-commerce platforms with Symfony.",
-        "Integration with payment gateways and external services."
+        "Android app development.",
+        "Web application development.",
+        "Webservices implementation.",
+        "E-commerce solutions."
       ]
     },
-    "tech": ["PHP", "Symfony", "JavaScript", "MySQL"]
+    "tech": ["PHP", "JavaScript", "Android", "MySQL"]
   },
   {
-    "company": "Primera Empresa",
+    "company": "Universidad de Huelva · Servicio de Actividades Deportivas",
     "role": {
-      "es": "Programador Junior",
-      "en": "Junior Programmer"
+      "es": "Informático",
+      "en": "IT Technician"
     },
-    "start": "2010",
-    "end": "2014",
-    "location": { "es": "España", "en": "Spain" },
+    "start": "2008",
+    "end": "2013",
+    "location": { "es": "Huelva · Presencial", "en": "Huelva · On-site" },
     "description": {
-      "es": "Inicio de carrera profesional desarrollando y manteniendo aplicaciones web con PHP y bases de datos relacionales.",
-      "en": "Career start developing and maintaining web applications with PHP and relational databases."
+      "es": "Soporte informático del Servicio de Actividades Deportivas a través de distintas empresas (Corporación Universidad de Huelva y Grupo Coperaula): desarrollo y mantenimiento de aplicaciones, web y redes sociales del SAD, y soporte a equipos.",
+      "en": "IT support for the Sports Activities Department through different companies (Corporación Universidad de Huelva and Grupo Coperaula): development and maintenance of applications, the SAD website and social media, and equipment support."
     },
     "highlights": {
       "es": [
-        "Desarrollo de módulos backend y frontend.",
-        "Mantenimiento y corrección de errores en producción."
+        "Desarrollo y mantenimiento de aplicaciones internas.",
+        "Mantenimiento de la página web y de las redes sociales del SAD.",
+        "Soporte a equipos informáticos del servicio."
       ],
       "en": [
-        "Development of backend and frontend modules.",
-        "Maintenance and bug fixing in production."
+        "Development and maintenance of internal applications.",
+        "Maintenance of the SAD website and social media.",
+        "Support for the department's IT equipment."
       ]
     },
-    "tech": ["PHP", "JavaScript", "MySQL", "HTML5", "CSS3"]
+    "tech": ["PHP", "JavaScript", "HTML5", "CSS3", "MySQL"]
   }
 ]

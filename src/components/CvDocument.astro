@@ -23,10 +23,10 @@ const cleanUrl = (u: string) => u.replace(/^https?:\/\/(www\.)?/, "");
   <h1>{profile.name}</h1>
   <div class="role">{tField(profile.role, lang)}</div>
   <div class="contact">
-    <span>{profile.email}</span>
+    <a href={`mailto:${profile.email}`}>{profile.email}</a>
     <span>{tField(profile.location, lang)}</span>
-    <span>{cleanUrl(profile.social.linkedin)}</span>
-    <span>{cleanUrl(profile.social.github)}</span>
+    <a href={profile.social.linkedin}>{cleanUrl(profile.social.linkedin)}</a>
+    <a href={profile.social.github}>{cleanUrl(profile.social.github)}</a>
   </div>
 </header>
 <hr />

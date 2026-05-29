@@ -14,6 +14,8 @@ const exportKey: Record<string, string> = {
   TypeScript: "siTypescript",
   "Vue.js": "siVuedotjs",
   React: "siReact",
+  Claude: "siClaude",
+  "Claude Code": "siClaude",
   HTML5: "siHtml5",
   CSS3: "siCss",
   "Tailwind CSS": "siTailwindcss",

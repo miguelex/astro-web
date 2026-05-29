@@ -35,10 +35,10 @@ const labelKey: Record<string, UIKey> = {
 
   <div class="card rounded-2xl p-8 sm:p-10">
     <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-[var(--border)] pb-5 text-sm text-[var(--fg-muted)]">
-      <span>{profile.email}</span>
+      <a href={`mailto:${profile.email}`} class="hover:text-[var(--brand)]">{profile.email}</a>
       <span>{tField(profile.location, lang)}</span>
-      <a href={profile.social.linkedin} class="hover:text-[var(--brand)]">LinkedIn</a>
-      <a href={profile.social.github} class="hover:text-[var(--brand)]">GitHub</a>
+      <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--brand)]">LinkedIn</a>
+      <a href={profile.social.github} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--brand)]">GitHub</a>
     </div>
 
     <p class="mt-6 leading-relaxed text-[var(--fg-muted)]">{tField(profile.summary, lang)}</p>
