@@ -1,0 +1,16 @@
+---
+import { getLangFromUrl, alternateUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const target = lang === "es" ? "en" : "es";
+const href = alternateUrl(Astro.url, target);
+---
+
+<a
+  href={href}
+  class="grid h-9 place-items-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3 font-mono text-xs font-semibold uppercase tracking-wide text-[var(--fg-muted)] transition-colors hover:text-[var(--brand)] hover:border-[var(--brand)]"
+  aria-label={t("lang.toggle")}
+  title={t("lang.toggle")}
+>
+  {target}
+</a>

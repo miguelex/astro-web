@@ -1,0 +1,24 @@
+---
+import { profile } from "../data";
+import { getLangFromUrl, tField } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const site = Astro.site ?? new URL("http://localhost:4321");
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: tField(profile.role, lang),
+  description: tField(profile.summary, lang),
+  email: `mailto:${profile.email}`,
+  url: site.href,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: tField(profile.location, lang),
+  },
+  sameAs: [profile.social.linkedin, profile.social.github].filter(Boolean),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(person)} is:inline />

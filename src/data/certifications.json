@@ -1,0 +1,30 @@
+[
+  {
+    "title": "PHP & Laravel: arquitectura avanzada",
+    "issuer": "Udemy",
+    "date": "2024-03",
+    "url": "https://www.udemy.com/certificate/ejemplo",
+    "tech": ["PHP", "Laravel"]
+  },
+  {
+    "title": "Docker y Kubernetes para desarrolladores",
+    "issuer": "Coursera",
+    "date": "2023-09",
+    "url": "https://www.coursera.org/account/accomplishments/ejemplo",
+    "tech": ["Docker", "Kubernetes"]
+  },
+  {
+    "title": "TypeScript profesional",
+    "issuer": "Platzi",
+    "date": "2023-01",
+    "url": null,
+    "tech": ["TypeScript"]
+  },
+  {
+    "title": "Diseño de APIs REST",
+    "issuer": "Udemy",
+    "date": "2022-05",
+    "url": "https://www.udemy.com/certificate/ejemplo2",
+    "tech": ["REST", "API"]
+  }
+]

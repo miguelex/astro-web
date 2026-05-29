@@ -1,0 +1,56 @@
+[
+  {
+    "category": "tech",
+    "items": [
+      "PHP",
+      "Laravel",
+      "Symfony",
+      "JavaScript",
+      "TypeScript",
+      "Vue.js",
+      "React",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Node.js"
+    ]
+  },
+  {
+    "category": "tools",
+    "items": [
+      "Git",
+      "Docker",
+      "Composer",
+      "PHPUnit",
+      "CI/CD",
+      "Linux",
+      "Nginx",
+      "Apache",
+      "Webpack",
+      "Vite"
+    ]
+  },
+  {
+    "category": "databases",
+    "items": [
+      "MySQL",
+      "MariaDB",
+      "PostgreSQL",
+      "Redis",
+      "MongoDB",
+      "SQLite",
+      "Elasticsearch"
+    ]
+  },
+  {
+    "category": "soft",
+    "items": [
+      "Trabajo en equipo",
+      "Comunicación",
+      "Mentoring",
+      "Metodologías ágiles (Scrum)",
+      "Resolución de problemas",
+      "Aprendizaje continuo"
+    ]
+  }
+]

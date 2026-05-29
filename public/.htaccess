@@ -1,0 +1,58 @@
+# ===========================================================================
+#  Configuración Apache para miguedelgado.dev (Miguel Ángel Delgado)
+#  (hosting propio basado en Apache / cPanel). Si despliegas en Vercel,
+#  Netlify o Cloudflare Pages este fichero se ignora: usa el equivalente
+#  de cada plataforma (vercel.json / netlify.toml / _headers).
+# ===========================================================================
+
+# --- Forzar HTTPS ----------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Cabeceras de seguridad ------------------------------------------------
+<IfModule mod_headers.c>
+  # HSTS: fuerza HTTPS durante 2 años (activa solo cuando el dominio sea 100% HTTPS)
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+  # Evita el sniffing de tipos MIME
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Bloquea el embebido en iframes (clickjacking)
+  Header always set X-Frame-Options "DENY"
+
+  # Control de la información del referer
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Restringe APIs sensibles del navegador
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+
+  # Política de seguridad de contenido (CSP)
+  # NOTA: 'unsafe-inline' es necesario por los pequeños scripts inline (tema/menú)
+  # y los estilos que Astro inyecta. Para una CSP más estricta, migra esos
+  # scripts a ficheros externos y usa hashes/nonces.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+</IfModule>
+
+# --- Compresión ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/xml
+</IfModule>
+
+# --- Caché de activos ------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Activos con hash (immutable): un año
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  # HTML: siempre revalidar
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# --- Páginas de error ------------------------------------------------------
+ErrorDocument 404 /404.html

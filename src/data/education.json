@@ -1,0 +1,28 @@
+[
+  {
+    "institution": "Universidad / Centro de Estudios",
+    "degree": {
+      "es": "Ingeniería Informática",
+      "en": "Computer Science Engineering"
+    },
+    "start": "2006",
+    "end": "2010",
+    "description": {
+      "es": "Formación en ingeniería del software, algoritmia, bases de datos y sistemas.",
+      "en": "Training in software engineering, algorithms, databases and systems."
+    }
+  },
+  {
+    "institution": "Formación Profesional",
+    "degree": {
+      "es": "Desarrollo de Aplicaciones Web (DAW)",
+      "en": "Web Application Development (DAW)"
+    },
+    "start": "2004",
+    "end": "2006",
+    "description": {
+      "es": "Base técnica en desarrollo web, programación y diseño de bases de datos.",
+      "en": "Technical foundation in web development, programming and database design."
+    }
+  }
+]

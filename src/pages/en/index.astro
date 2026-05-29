@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HomeSections from "../../components/HomeSections.astro";
+import { profile } from "../../data";
+---
+
+<BaseLayout
+  title={`${profile.name} · Software Engineer`}
+  description={profile.summary.en}
+>
+  <HomeSections />
+</BaseLayout>

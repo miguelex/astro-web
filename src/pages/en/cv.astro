@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CvContent from "../../components/CvContent.astro";
+import { profile } from "../../data";
+---
+
+<BaseLayout
+  title={`Resume · ${profile.name}`}
+  description="Resume of Miguel Ángel Delgado, fullstack PHP software engineer."
+  noindex={true}
+>
+  <CvContent />
+</BaseLayout>

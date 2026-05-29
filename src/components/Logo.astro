@@ -1,0 +1,78 @@
+---
+/**
+ * Logo / monograma MD (Miguel Delgado).
+ * Letras M y D dibujadas como trazos geométricos dentro de una "etiqueta" de
+ * código, con un cursor parpadeante a modo de guiño a la programación.
+ * - Por defecto usa un degradado de marca (índigo -> cian).
+ * - Con `mono` usa `currentColor` para adaptarse a cualquier color/tema.
+ */
+interface Props {
+  class?: string;
+  size?: number;
+  mono?: boolean;
+  title?: string;
+}
+const { class: className, size = 40, mono = false, title = "MD" } = Astro.props;
+const uid = "lg" + Math.random().toString(36).slice(2, 8);
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  fill="none"
+  role="img"
+  aria-label={title}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {
+    !mono && (
+      <defs>
+        <linearGradient id={`${uid}-bg`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4f46e5" />
+          <stop offset="1" stop-color="#06b6d4" />
+        </linearGradient>
+      </defs>
+    )
+  }
+
+  <!-- Placa redondeada -->
+  <rect
+    x="2"
+    y="2"
+    width="60"
+    height="60"
+    rx="14"
+    fill={mono ? "none" : `url(#${uid}-bg)`}
+    stroke={mono ? "currentColor" : "none"}
+    stroke-width={mono ? 3 : 0}
+  />
+
+  <g
+    stroke={mono ? "currentColor" : "#ffffff"}
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- M -->
+    <path d="M14 44 V20 L24 34 L34 20 V44" />
+    <!-- D (trazo vertical + cuenco) -->
+    <path d="M42 20 V44" />
+    <path d="M42 20 C54 20 55 27 55 32 C55 37 54 44 42 44" />
+  </g>
+
+  <!-- Cursor de código (guiño dev) -->
+  {
+    !mono && (
+      <rect x="44" y="48.5" width="9" height="3.5" rx="1.5" fill="#ffffff" opacity="0.9">
+        <animate
+          attributeName="opacity"
+          values="0.9;0.15;0.9"
+          dur="1.4s"
+          repeatCount="indefinite"
+        />
+      </rect>
+    )
+  }
+</svg>

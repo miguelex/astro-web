@@ -1,0 +1,47 @@
+---
+import { experience } from "../data";
+import { getLangFromUrl, useTranslations, tField } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<ol class="relative border-l border-[var(--border)] pl-6 sm:pl-8">
+  {
+    experience.map((job) => (
+      <li class="relative mb-10 last:mb-0">
+        <span class="absolute -left-[1.65rem] top-1.5 grid size-3 place-items-center sm:-left-[2.15rem]">
+          <span class="size-3 rounded-full border-2 border-[var(--brand)] bg-[var(--bg)]" />
+        </span>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+          <h3 class="font-display text-lg font-bold">{tField(job.role, lang)}</h3>
+          <span class="font-mono text-xs text-[var(--brand)]">
+            {job.start} — {job.end ?? t("present")}
+          </span>
+        </div>
+        <p class="mt-0.5 text-sm font-medium text-[var(--fg-muted)]">
+          {job.company} · {tField(job.location, lang)}
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--fg-muted)]">
+          {tField(job.description, lang)}
+        </p>
+        <ul class="mt-3 space-y-1.5">
+          {tField(job.highlights, lang).map((h) => (
+            <li class="flex gap-2 text-sm text-[var(--fg-muted)]">
+              <span class="mt-1 text-[var(--brand)]" aria-hidden="true">
+                ▹
+              </span>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+        <ul class="mt-3 flex flex-wrap gap-1.5">
+          {job.tech.map((tag) => (
+            <li class="rounded-md bg-[var(--bg-subtle)] px-2 py-0.5 font-mono text-xs text-[var(--fg-subtle)]">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ol>

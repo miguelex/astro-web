@@ -1,0 +1,16 @@
+---
+import PageHeader from "./PageHeader.astro";
+import ProjectCard from "./ProjectCard.astro";
+import { projects } from "../data";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<PageHeader title={t("projects.title")} subtitle={t("projects.subtitle")} />
+
+<div class="mx-auto max-w-5xl px-5 py-14">
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</div>

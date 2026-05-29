@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "plataforma-saas",
+    "title": {
+      "es": "Plataforma SaaS de gestión",
+      "en": "SaaS management platform"
+    },
+    "description": {
+      "es": "Aplicación multi-tenant para la gestión de procesos empresariales, con panel de control, facturación y reporting en tiempo real.",
+      "en": "Multi-tenant application for managing business processes, with dashboard, billing and real-time reporting."
+    },
+    "image": "/images/projects/placeholder-1.svg",
+    "tech": ["Laravel", "Vue.js", "MySQL", "Redis", "Docker"],
+    "repo": "https://github.com/tu-usuario/proyecto-1",
+    "demo": "https://demo.ejemplo.com",
+    "featured": true,
+    "year": "2023"
+  },
+  {
+    "slug": "api-ecommerce",
+    "title": {
+      "es": "API para e-commerce",
+      "en": "E-commerce API"
+    },
+    "description": {
+      "es": "API REST escalable para una tienda online con catálogo, carrito, pagos e integración con sistemas de envío.",
+      "en": "Scalable REST API for an online store with catalog, cart, payments and shipping integrations."
+    },
+    "image": "/images/projects/placeholder-2.svg",
+    "tech": ["PHP", "Symfony", "PostgreSQL", "Elasticsearch"],
+    "repo": null,
+    "demo": "https://demo2.ejemplo.com",
+    "featured": true,
+    "year": "2022"
+  },
+  {
+    "slug": "herramienta-interna",
+    "title": {
+      "es": "Herramienta interna de analítica",
+      "en": "Internal analytics tool"
+    },
+    "description": {
+      "es": "Dashboard interno para visualización de métricas y generación de informes automáticos para equipos de negocio.",
+      "en": "Internal dashboard for metrics visualization and automated report generation for business teams."
+    },
+    "image": "/images/projects/placeholder-3.svg",
+    "tech": ["Laravel", "React", "MySQL", "Chart.js"],
+    "repo": "https://github.com/tu-usuario/proyecto-3",
+    "demo": null,
+    "featured": true,
+    "year": "2021"
+  }
+]

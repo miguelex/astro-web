@@ -1,0 +1,79 @@
+[
+  {
+    "company": "Empresa Actual S.L.",
+    "role": {
+      "es": "Desarrollador Fullstack Senior",
+      "en": "Senior Fullstack Developer"
+    },
+    "start": "2019",
+    "end": null,
+    "location": { "es": "Remoto · España", "en": "Remote · Spain" },
+    "description": {
+      "es": "Desarrollo y mantenimiento de aplicaciones web de gran escala con PHP/Laravel y Vue.js, liderando decisiones técnicas y buenas prácticas en el equipo.",
+      "en": "Development and maintenance of large-scale web applications with PHP/Laravel and Vue.js, leading technical decisions and best practices within the team."
+    },
+    "highlights": {
+      "es": [
+        "Diseño de arquitectura de servicios y APIs REST.",
+        "Mejora del rendimiento reduciendo tiempos de carga un 40%.",
+        "Mentoring de desarrolladores junior."
+      ],
+      "en": [
+        "Service architecture and REST API design.",
+        "Performance improvements reducing load times by 40%.",
+        "Mentoring of junior developers."
+      ]
+    },
+    "tech": ["PHP", "Laravel", "Vue.js", "MySQL", "Docker", "Redis"]
+  },
+  {
+    "company": "Consultora Tecnológica",
+    "role": {
+      "es": "Desarrollador Web",
+      "en": "Web Developer"
+    },
+    "start": "2014",
+    "end": "2019",
+    "location": { "es": "Madrid, España", "en": "Madrid, Spain" },
+    "description": {
+      "es": "Desarrollo de soluciones a medida para clientes de distintos sectores, desde e-commerce hasta intranets corporativas.",
+      "en": "Development of custom solutions for clients across sectors, from e-commerce to corporate intranets."
+    },
+    "highlights": {
+      "es": [
+        "Implementación de plataformas e-commerce con Symfony.",
+        "Integración con pasarelas de pago y servicios externos."
+      ],
+      "en": [
+        "Implementation of e-commerce platforms with Symfony.",
+        "Integration with payment gateways and external services."
+      ]
+    },
+    "tech": ["PHP", "Symfony", "JavaScript", "MySQL"]
+  },
+  {
+    "company": "Primera Empresa",
+    "role": {
+      "es": "Programador Junior",
+      "en": "Junior Programmer"
+    },
+    "start": "2010",
+    "end": "2014",
+    "location": { "es": "España", "en": "Spain" },
+    "description": {
+      "es": "Inicio de carrera profesional desarrollando y manteniendo aplicaciones web con PHP y bases de datos relacionales.",
+      "en": "Career start developing and maintaining web applications with PHP and relational databases."
+    },
+    "highlights": {
+      "es": [
+        "Desarrollo de módulos backend y frontend.",
+        "Mantenimiento y corrección de errores en producción."
+      ],
+      "en": [
+        "Development of backend and frontend modules.",
+        "Maintenance and bug fixing in production."
+      ]
+    },
+    "tech": ["PHP", "JavaScript", "MySQL", "HTML5", "CSS3"]
+  }
+]

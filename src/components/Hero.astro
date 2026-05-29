@@ -1,0 +1,63 @@
+---
+import { profile } from "../data";
+import SocialButtons from "./SocialButtons.astro";
+import { getLangFromUrl, tField } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+---
+
+<section class="relative overflow-hidden">
+  <!-- malla de fondo sutil -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
+    style="background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px); background-size: 48px 48px;"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto grid max-w-5xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
+    <div>
+      <p class="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-card)] px-3 py-1 font-mono text-xs text-[var(--fg-muted)]">
+        <span class="size-2 rounded-full bg-emerald-500"></span>
+        {tField(profile.location, lang)}
+      </p>
+
+      <h1 class="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        {profile.name}
+      </h1>
+      <p class="mt-4 font-mono text-base text-[var(--brand)] sm:text-lg">
+        {tField(profile.role, lang)}
+      </p>
+      <p class="mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-muted)]">
+        {tField(profile.summary, lang)}
+      </p>
+
+      <div class="mt-8">
+        <SocialButtons />
+      </div>
+    </div>
+
+    <!-- Tarjeta de código decorativa -->
+    <div class="relative hidden lg:block">
+      <div class="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] shadow-xl shadow-black/5">
+        <div class="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--bg-subtle)] px-4 py-3">
+          <span class="size-3 rounded-full bg-red-400/80"></span>
+          <span class="size-3 rounded-full bg-amber-400/80"></span>
+          <span class="size-3 rounded-full bg-emerald-400/80"></span>
+          <span class="ml-2 font-mono text-xs text-[var(--fg-subtle)]">developer.php</span>
+        </div>
+        <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed"><code><span class="text-violet-500">class</span> <span class="text-[var(--brand)]">Developer</span> {'{'}
+  <span class="text-violet-500">public</span> <span class="text-emerald-500">string</span> $name = <span class="text-amber-500">'{profile.initials}'</span>;
+  <span class="text-violet-500">public</span> <span class="text-emerald-500">int</span> $years = <span class="text-cyan-500">15</span>;
+  <span class="text-violet-500">public</span> <span class="text-emerald-500">array</span> $stack = [
+    <span class="text-amber-500">'PHP'</span>, <span class="text-amber-500">'Laravel'</span>,
+    <span class="text-amber-500">'Vue'</span>, <span class="text-amber-500">'MySQL'</span>,
+  ];
+
+  <span class="text-violet-500">public function</span> <span class="text-[var(--brand)]">code</span>(): <span class="text-emerald-500">void</span> {'{'}
+    <span class="text-violet-500">while</span> (<span class="text-cyan-500">true</span>) $this-&gt;<span class="text-[var(--brand)]">learn</span>();
+  {'}'}
+{'}'}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>

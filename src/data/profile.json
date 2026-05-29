@@ -1,0 +1,29 @@
+{
+  "name": "Miguel Ángel Delgado",
+  "initials": "MD",
+  "role": {
+    "es": "Ingeniero de Software · Desarrollador Fullstack PHP",
+    "en": "Software Engineer · Fullstack PHP Developer"
+  },
+  "tagline": {
+    "es": "15 años construyendo software web robusto y mantenible.",
+    "en": "15 years building robust, maintainable web software."
+  },
+  "summary": {
+    "es": "Ingeniero de software con más de 15 años de experiencia en desarrollo web fullstack, especializado en PHP y su ecosistema. Me apasiona escribir código limpio, diseñar arquitecturas sólidas y mantenerme al día con las tecnologías actuales. Disfruto resolviendo problemas complejos y entregando productos de calidad de principio a fin.",
+    "en": "Software engineer with 15+ years of experience in fullstack web development, specialized in PHP and its ecosystem. I am passionate about writing clean code, designing solid architectures and staying up to date with current technologies. I enjoy solving complex problems and delivering quality products end to end."
+  },
+  "location": {
+    "es": "España",
+    "en": "Spain"
+  },
+  "email": "miguelexd@gmail.com",
+  "cvFile": {
+    "es": "/cv",
+    "en": "/en/cv"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/tu-usuario",
+    "github": "https://github.com/tu-usuario"
+  }
+}
