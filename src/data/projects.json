@@ -11,7 +11,7 @@
     },
     "image": "/images/projects/blog-de-cafe.jpg",
     "tech": ["HTML5", "CSS3", "BEM"],
-    "repo": null,
+    "repo": "https://github.com/miguelex/DWC/tree/main/blogdecafe",
     "demo": "https://migueblogdecafe.netlify.app/",
     "featured": true,
     "year": "2023"
@@ -28,7 +28,7 @@
     },
     "image": "/images/projects/festival-musica.jpg",
     "tech": ["PHP", "JavaScript", "HTML5", "CSS3"],
-    "repo": null,
+    "repo": "https://github.com/miguelex/DWC/tree/main/FestivalMusica",
     "demo": "https://festivalmusicadwc.netlify.app/",
     "featured": true,
     "year": "2023"
@@ -45,7 +45,7 @@
     },
     "image": "/images/projects/rick-morty-api.jpg",
     "tech": ["React", "JavaScript"],
-    "repo": null,
+    "repo": "https://github.com/miguelex/rickmorty",
     "demo": "https://miguelanrickandmortyapi.netlify.app/",
     "featured": true,
     "year": "2022"
