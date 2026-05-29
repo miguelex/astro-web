@@ -17,6 +17,11 @@ node_modules/
 npm-debug.log*
 *.log
 
+# skills locales (herramientas de Claude, no parte del proyecto)
+.agents/
+.kiro/
+skills-lock.json
+
 # os / editor
 .DS_Store
 Thumbs.db
