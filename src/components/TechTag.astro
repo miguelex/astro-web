@@ -1,0 +1,29 @@
+---
+import { techIconPath } from "../lib/techIcons";
+
+interface Props {
+  name: string;
+  /** "sm" para listados densos (experiencia/proyectos), "md" para skills */
+  size?: "sm" | "md";
+}
+const { name, size = "sm" } = Astro.props;
+const iconPath = techIconPath(name);
+const pad = size === "sm" ? "px-2 py-0.5 text-[11px]" : "px-2.5 py-1 text-xs";
+const icon = size === "sm" ? "size-3" : "size-3.5";
+---
+
+<li
+  class:list={[
+    "inline-flex items-center gap-1.5 rounded-md border border-[var(--border)] bg-[var(--bg-subtle)] font-mono text-[var(--fg-muted)] transition-colors hover:border-[var(--brand)]/40 hover:text-[var(--fg)]",
+    pad,
+  ]}
+>
+  {
+    iconPath && (
+      <svg class={`${icon} shrink-0 opacity-80`} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d={iconPath} />
+      </svg>
+    )
+  }
+  {name}
+</li>

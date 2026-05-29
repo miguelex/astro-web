@@ -7,7 +7,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<PageHeader title={t("projects.title")} subtitle={t("projects.subtitle")} kicker="Work" />
+<PageHeader title={t("projects.title")} subtitle={t("projects.subtitle")} kicker={t("kicker.work")} />
 
 <div class="mx-auto max-w-5xl px-5 py-16">
   <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

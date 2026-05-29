@@ -1,6 +1,7 @@
 ---
 import type { Project } from "../types";
 import { getLangFromUrl, useTranslations, tField } from "../i18n/utils";
+import { techIconPath } from "../lib/techIcons";
 
 interface Props {
   project: Project;
@@ -43,11 +44,19 @@ const t = useTranslations(lang);
 
     <ul class="mt-4 flex flex-wrap gap-1.5">
       {
-        project.tech.map((tag) => (
-          <li class="rounded-md border border-[var(--brand)]/20 bg-[var(--brand)]/[0.07] px-2 py-0.5 font-mono text-[11px] text-[var(--brand)]">
-            {tag}
-          </li>
-        ))
+        project.tech.map((tag) => {
+          const iconPath = techIconPath(tag);
+          return (
+            <li class="inline-flex items-center gap-1.5 rounded-md border border-[var(--brand)]/20 bg-[var(--brand)]/[0.07] px-2 py-0.5 font-mono text-[11px] text-[var(--brand)]">
+              {iconPath && (
+                <svg class="size-3 shrink-0 opacity-90" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d={iconPath} />
+                </svg>
+              )}
+              {tag}
+            </li>
+          );
+        })
       }
     </ul>
 

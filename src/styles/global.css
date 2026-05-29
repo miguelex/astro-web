@@ -13,43 +13,44 @@
 }
 
 /* ===========================================================================
-   Tokens de tema — "Editorial técnico": tinta cálida + acento ámbar/dorado
+   Tokens de tema — "Terminal/dev": neutros fríos (slate) + acento azul-cian.
+   Los acentos por categoría (skills) aportan el multicolor.
    =========================================================================== */
 :root {
-  --bg: #fbf9f4;
-  --bg-subtle: #f3efe6;
+  --bg: #f8fafc;
+  --bg-subtle: #eef2f7;
   --bg-card: #ffffff;
-  --border: #e6e0d2;
-  --border-strong: #d6cdb8;
-  --fg: #1b1a17;
-  --fg-muted: #57534e;
-  --fg-subtle: #8a8378;
-  --brand: #b45309; /* ámbar-700, contraste en claro */
-  --brand-soft: #c2740f;
-  --brand-fg: #fffaf0;
-  --ring: #d97706;
-  --grid: rgba(27, 26, 23, 0.05);
-  --glow: rgba(217, 119, 6, 0.14);
-  --shadow: 0 1px 2px rgba(27, 26, 23, 0.04), 0 8px 30px rgba(27, 26, 23, 0.06);
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --fg-subtle: #7c8aa0;
+  --brand: #0284c7; /* azul-cian con contraste suficiente en claro */
+  --brand-soft: #0ea5e9;
+  --brand-fg: #f0f9ff;
+  --ring: #0ea5e9;
+  --grid: rgba(15, 23, 42, 0.05);
+  --glow: rgba(56, 189, 248, 0.18);
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 30px rgba(15, 23, 42, 0.07);
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --bg: #0c0b0d;
-  --bg-subtle: #141216;
-  --bg-card: #17151a;
-  --border: #2a262e;
-  --border-strong: #3a3540;
-  --fg: #efe9e0;
-  --fg-muted: #a59f97;
-  --fg-subtle: #726c66;
-  --brand: #f0b429; /* ámbar brillante en oscuro */
-  --brand-soft: #f7c948;
-  --brand-fg: #1a1400;
-  --ring: #f0b429;
-  --grid: rgba(240, 233, 224, 0.04);
-  --glow: rgba(240, 180, 41, 0.16);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 50px rgba(0, 0, 0, 0.45);
+  --bg: #0f172a; /* slate-900: oscuro pero respirado, nada de negro */
+  --bg-subtle: #16213a;
+  --bg-card: #1c2740;
+  --border: #2c3a52;
+  --border-strong: #3d4d68;
+  --fg: #e6edf6;
+  --fg-muted: #9fb0c6;
+  --fg-subtle: #6e809a;
+  --brand: #38bdf8; /* cian brillante */
+  --brand-soft: #7dd3fc;
+  --brand-fg: #07131f;
+  --ring: #38bdf8;
+  --grid: rgba(226, 237, 246, 0.045);
+  --glow: rgba(56, 189, 248, 0.2);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 18px 50px rgba(0, 0, 0, 0.4);
   color-scheme: dark;
 }
 

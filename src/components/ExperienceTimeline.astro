@@ -1,6 +1,7 @@
 ---
 import { experience } from "../data";
 import { getLangFromUrl, useTranslations, tField } from "../i18n/utils";
+import TechTag from "./TechTag.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -36,9 +37,7 @@ const t = useTranslations(lang);
         </ul>
         <ul class="mt-4 flex flex-wrap gap-1.5">
           {job.tech.map((tag) => (
-            <li class="rounded-md border border-[var(--border)] px-2 py-0.5 font-mono text-[11px] text-[var(--fg-subtle)]">
-              {tag}
-            </li>
+            <TechTag name={tag} size="sm" />
           ))}
         </ul>
       </li>

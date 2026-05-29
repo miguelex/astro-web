@@ -9,7 +9,7 @@ const posts = await getPosts("es"); // el blog es siempre en español
 const base = "/blog";
 ---
 
-<PageHeader title={t("blog.title")} subtitle={t("blog.subtitle")} kicker="Blog" />
+<PageHeader title={t("blog.title")} subtitle={t("blog.subtitle")} kicker={t("kicker.blog")} />
 
 <div class="mx-auto max-w-3xl px-5 py-16">
   {
