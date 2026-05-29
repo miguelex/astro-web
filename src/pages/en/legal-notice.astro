@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LegalContent from "../../components/LegalContent.astro";
+import { profile } from "../../data";
+
+const updated = "2026-05-29";
+---
+
+<BaseLayout
+  title={`Legal notice · ${profile.name}`}
+  description="Legal notice and site owner information for miguedelgado.dev."
+  noindex={true}
+>
+  <LegalContent title="Legal notice" updated={updated}>
+    <h2>Site owner</h2>
+    <p>
+      This website (<strong>miguedelgado.dev</strong>) is a personal portfolio
+      owned by <strong>{profile.name}</strong>, based in Palos de la Frontera
+      (Huelva, Spain). Contact:
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+    </p>
+
+    <h2>Purpose</h2>
+    <p>
+      The site is purely informational and professional: it presents the owner's
+      background, experience and projects. Accessing and using the site implies
+      acceptance of the terms set out in this legal notice.
+    </p>
+
+    <h2>Intellectual property</h2>
+    <p>
+      The content, text, design and code of this site belong to its owner, except
+      for third-party logos (technologies, learning platforms), which belong to
+      their respective owners and are used for identification purposes only. Their
+      reproduction without authorization is prohibited.
+    </p>
+
+    <h2>Liability</h2>
+    <p>
+      The owner is not responsible for any use third parties may make of the
+      information published, nor for any damages arising from links to external
+      sites, whose contents the owner does not control.
+    </p>
+
+    <h2>Applicable law</h2>
+    <p>
+      This legal notice is governed by Spanish law. Any dispute shall be submitted
+      to the courts that apply under the law.
+    </p>
+  </LegalContent>
+</BaseLayout>

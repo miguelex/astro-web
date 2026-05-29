@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LegalContent from "../components/LegalContent.astro";
+import { profile } from "../data";
+
+const updated = "2026-05-29";
+---
+
+<BaseLayout
+  title={`Aviso legal · ${profile.name}`}
+  description="Aviso legal e información del titular del sitio web miguedelgado.dev."
+  noindex={true}
+>
+  <LegalContent title="Aviso legal" updated={updated}>
+    <h2>Titular del sitio</h2>
+    <p>
+      Este sitio web (<strong>miguedelgado.dev</strong>) es un portfolio personal
+      cuyo titular es <strong>{profile.name}</strong>, con domicilio en Palos de la
+      Frontera (Huelva, España) y dirección de contacto
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+    </p>
+
+    <h2>Objeto</h2>
+    <p>
+      El sitio tiene una finalidad meramente informativa y profesional: presentar
+      la trayectoria, experiencia y proyectos de su titular. El acceso y uso del
+      sitio implica la aceptación de las condiciones recogidas en este aviso legal.
+    </p>
+
+    <h2>Propiedad intelectual</h2>
+    <p>
+      Los contenidos, textos, diseño y código de este sitio son propiedad de su
+      titular, salvo los logotipos de terceros (tecnologías, plataformas de
+      formación), que pertenecen a sus respectivos propietarios y se usan
+      únicamente con fines identificativos. Queda prohibida su reproducción sin
+      autorización.
+    </p>
+
+    <h2>Responsabilidad</h2>
+    <p>
+      El titular no se hace responsable del uso que terceros puedan hacer de la
+      información publicada, ni de los posibles daños derivados de enlaces a sitios
+      externos, cuyos contenidos no controla.
+    </p>
+
+    <h2>Legislación aplicable</h2>
+    <p>
+      Este aviso legal se rige por la legislación española. Para cualquier
+      controversia, las partes se someten a los juzgados y tribunales que
+      correspondan conforme a derecho.
+    </p>
+  </LegalContent>
+</BaseLayout>

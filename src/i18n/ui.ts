@@ -62,6 +62,9 @@ export const ui = {
     "lang.toggle": "Cambiar idioma",
     "present": "Actualidad",
     "skiplink": "Saltar al contenido",
+    "legal.notice": "Aviso legal",
+    "legal.privacy": "Privacidad",
+    "legal.updated": "Última actualización",
   },
   en: {
     "nav.home": "Home",
@@ -116,6 +119,9 @@ export const ui = {
     "lang.toggle": "Switch language",
     "present": "Present",
     "skiplink": "Skip to content",
+    "legal.notice": "Legal notice",
+    "legal.privacy": "Privacy",
+    "legal.updated": "Last updated",
   },
 } as const;
 

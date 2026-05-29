@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LegalContent from "../components/LegalContent.astro";
+import { profile } from "../data";
+
+const updated = "2026-05-29";
+---
+
+<BaseLayout
+  title={`Política de privacidad · ${profile.name}`}
+  description="Política de privacidad del sitio web miguedelgado.dev."
+  noindex={true}
+>
+  <LegalContent title="Política de privacidad" updated={updated}>
+    <h2>Responsable del tratamiento</h2>
+    <p>
+      <strong>{profile.name}</strong>, titular de <strong>miguedelgado.dev</strong>.
+      Contacto: <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+    </p>
+
+    <h2>¿Qué datos se tratan?</h2>
+    <p>
+      Este sitio es estático y <strong>no recopila datos personales de forma
+      automática</strong>. Únicamente se tratan datos si decides escribir
+      voluntariamente al correo de contacto, en cuyo caso se utilizan
+      exclusivamente para responder a tu consulta.
+    </p>
+
+    <h2>Cookies y almacenamiento local</h2>
+    <p>
+      Este sitio <strong>no utiliza cookies</strong> ni herramientas de analítica
+      o seguimiento de terceros. Solo emplea el almacenamiento local
+      (<code>localStorage</code>) del navegador para recordar tu preferencia de
+      tema (claro u oscuro). Es almacenamiento estrictamente necesario para esa
+      funcionalidad, no contiene datos personales y no se comparte con nadie.
+      Puedes borrarlo en cualquier momento desde las opciones de tu navegador.
+    </p>
+
+    <h2>Conservación y cesión</h2>
+    <p>
+      Los correos que envíes se conservan el tiempo necesario para atender tu
+      solicitud. No se ceden datos a terceros salvo obligación legal.
+    </p>
+
+    <h2>Tus derechos</h2>
+    <p>
+      Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición,
+      limitación y portabilidad escribiendo a
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>. Asimismo, tienes
+      derecho a presentar una reclamación ante la Agencia Española de Protección
+      de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).
+    </p>
+  </LegalContent>
+</BaseLayout>

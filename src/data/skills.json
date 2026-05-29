@@ -6,28 +6,28 @@
       "Laravel",
       "Symfony",
       "JavaScript",
-      "TypeScript",
-      "Vue.js",
       "React",
       "HTML5",
       "CSS3",
       "Tailwind CSS",
-      "Node.js"
+      "Bootstrap",
+      "Node.js",
+      "Java",
+      "Kotlin"
     ]
   },
   {
     "category": "tools",
     "items": [
+      "Claude",
+      "Agentes IA",
       "Git",
-      "Docker",
+      "GitHub",
       "Composer",
       "PHPUnit",
       "CI/CD",
-      "Linux",
-      "Nginx",
-      "Apache",
-      "Webpack",
-      "Vite"
+      "Docker",
+      "Linux"
     ]
   },
   {
@@ -35,11 +35,8 @@
     "items": [
       "MySQL",
       "MariaDB",
-      "PostgreSQL",
-      "Redis",
-      "MongoDB",
-      "SQLite",
-      "Elasticsearch"
+      "SQL Server",
+      "PostgreSQL"
     ]
   },
   {
@@ -48,9 +45,12 @@
       "Trabajo en equipo",
       "Comunicación",
       "Mentoring",
-      "Metodologías ágiles (Scrum)",
       "Resolución de problemas",
-      "Aprendizaje continuo"
+      "Aprendizaje continuo",
+      "Motivación",
+      "Ética",
+      "Gestión del tiempo",
+      "Flexibilidad"
     ]
   }
 ]

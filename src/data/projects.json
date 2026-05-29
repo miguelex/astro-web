@@ -1,53 +1,53 @@
 [
   {
-    "slug": "plataforma-saas",
+    "slug": "blog-de-cafe",
     "title": {
-      "es": "Plataforma SaaS de gestión",
-      "en": "SaaS management platform"
+      "es": "Blog de café",
+      "en": "Coffee blog"
     },
     "description": {
-      "es": "Aplicación multi-tenant para la gestión de procesos empresariales, con panel de control, facturación y reporting en tiempo real.",
-      "en": "Multi-tenant application for managing business processes, with dashboard, billing and real-time reporting."
+      "es": "Blog responsive sobre el mundo del café, maquetado exclusivamente con HTML5 y CSS siguiendo la metodología BEM para lograr un CSS escalable y mantenible. Los textos son de ejemplo.",
+      "en": "Responsive blog about the world of coffee, built exclusively with HTML5 and CSS following the BEM methodology for scalable, maintainable CSS. Texts are placeholders."
     },
-    "image": "/images/projects/placeholder-1.svg",
-    "tech": ["Laravel", "Vue.js", "MySQL", "Redis", "Docker"],
-    "repo": "https://github.com/tu-usuario/proyecto-1",
-    "demo": "https://demo.ejemplo.com",
+    "image": "/images/projects/blog-de-cafe.jpg",
+    "tech": ["HTML5", "CSS3", "BEM"],
+    "repo": null,
+    "demo": "https://migueblogdecafe.netlify.app/",
     "featured": true,
     "year": "2023"
   },
   {
-    "slug": "api-ecommerce",
+    "slug": "festival-musica",
     "title": {
-      "es": "API para e-commerce",
-      "en": "E-commerce API"
+      "es": "Web de festival de música",
+      "en": "Music festival website"
     },
     "description": {
-      "es": "API REST escalable para una tienda online con catálogo, carrito, pagos e integración con sistemas de envío.",
-      "en": "Scalable REST API for an online store with catalog, cart, payments and shipping integrations."
+      "es": "Sitio web para un festival de música, con PHP en el backend y HTML, CSS y JavaScript en el frontend. Incluye secciones de cartel, horarios e información del evento.",
+      "en": "Website for a music festival, with PHP on the backend and HTML, CSS and JavaScript on the frontend. Includes line-up, schedule and event information sections."
     },
-    "image": "/images/projects/placeholder-2.svg",
-    "tech": ["PHP", "Symfony", "PostgreSQL", "Elasticsearch"],
+    "image": "/images/projects/festival-musica.jpg",
+    "tech": ["PHP", "JavaScript", "HTML5", "CSS3"],
     "repo": null,
-    "demo": "https://demo2.ejemplo.com",
+    "demo": "https://festivalmusicadwc.netlify.app/",
     "featured": true,
-    "year": "2022"
+    "year": "2023"
   },
   {
-    "slug": "herramienta-interna",
+    "slug": "rick-morty-api",
     "title": {
-      "es": "Herramienta interna de analítica",
-      "en": "Internal analytics tool"
+      "es": "Explorador de Rick & Morty",
+      "en": "Rick & Morty explorer"
     },
     "description": {
-      "es": "Dashboard interno para visualización de métricas y generación de informes automáticos para equipos de negocio.",
-      "en": "Internal dashboard for metrics visualization and automated report generation for business teams."
+      "es": "Aplicación en React que consume la API pública de Rick & Morty para explorar personajes, con búsqueda y navegación entre páginas de resultados.",
+      "en": "React application that consumes the public Rick & Morty API to explore characters, with search and pagination through the results."
     },
-    "image": "/images/projects/placeholder-3.svg",
-    "tech": ["Laravel", "React", "MySQL", "Chart.js"],
-    "repo": "https://github.com/tu-usuario/proyecto-3",
-    "demo": null,
+    "image": "/images/projects/rick-morty-api.jpg",
+    "tech": ["React", "JavaScript"],
+    "repo": null,
+    "demo": "https://miguelanrickandmortyapi.netlify.app/",
     "featured": true,
-    "year": "2021"
+    "year": "2022"
   }
 ]

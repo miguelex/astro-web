@@ -4,10 +4,24 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const target = lang === "es" ? "en" : "es";
 
-// El blog solo existe en español. Si estamos en una ruta de blog y cambiamos a
-// inglés, no hay equivalente: llevamos a la home inglesa.
-const path = Astro.url.pathname;
-const href = target === "en" && path.startsWith("/blog") ? "/en" : alternateUrl(Astro.url, target);
+// Rutas cuyo slug difiere entre idiomas (no sirve el mapeo genérico).
+const slugMap: Record<string, string> = {
+  "/aviso-legal": "/en/legal-notice",
+  "/en/legal-notice": "/aviso-legal",
+  "/privacidad": "/en/privacy",
+  "/en/privacy": "/privacidad",
+};
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+let href: string;
+if (slugMap[path]) {
+  href = slugMap[path];
+} else if (target === "en" && path.startsWith("/blog")) {
+  // El blog solo existe en español; al pasar a inglés vamos a la home inglesa.
+  href = "/en";
+} else {
+  href = alternateUrl(Astro.url, target);
+}
 ---
 
 <a

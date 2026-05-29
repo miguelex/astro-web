@@ -41,6 +41,16 @@ const year = new Date().getFullYear();
         </a>
       </div>
 
+      <nav class="flex items-center gap-4 text-xs text-[var(--fg-subtle)]" aria-label="Legal">
+        <a href={lang === "es" ? "/aviso-legal" : "/en/legal-notice"} class="transition-colors hover:text-[var(--brand)]">
+          {t("legal.notice")}
+        </a>
+        <span class="size-1 rounded-full bg-[var(--fg-subtle)]"></span>
+        <a href={lang === "es" ? "/privacidad" : "/en/privacy"} class="transition-colors hover:text-[var(--brand)]">
+          {t("legal.privacy")}
+        </a>
+      </nav>
+
       <p class="font-mono text-xs text-[var(--fg-subtle)]">
         © {year} {profile.name}. {t("footer.rights")}
       </p>

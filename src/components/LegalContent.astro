@@ -1,0 +1,32 @@
+---
+/**
+ * Cuerpo de las páginas legales. El contenido se pasa como slot (Markdown/HTML)
+ * y se renderiza con los estilos de prosa del blog.
+ */
+import PageHeader from "./PageHeader.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+interface Props {
+  title: string;
+  updated: string; // fecha ISO "2026-05-29"
+  kicker?: string;
+}
+const { title, updated, kicker } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const updatedLabel = new Date(updated).toLocaleDateString(
+  lang === "es" ? "es-ES" : "en-US",
+  { day: "numeric", month: "long", year: "numeric" },
+);
+---
+
+<PageHeader title={title} kicker={kicker ?? "Legal"} />
+
+<div class="mx-auto max-w-2xl px-5 py-16">
+  <p class="mb-8 font-mono text-xs text-[var(--fg-subtle)]">
+    {t("legal.updated")}: {updatedLabel}
+  </p>
+  <div class="prose">
+    <slot />
+  </div>
+</div>

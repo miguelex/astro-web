@@ -3,14 +3,17 @@ import { profile } from "../data";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-// Descarga directa del PDF real generado en el build.
-const cvHref = lang === "es" ? "/cv.pdf" : "/cv.en.pdf";
+// El PDF real solo existe tras `npm run build` (lo genera Playwright). En dev
+// ese archivo no está, así que el botón abre la página imprimible como fallback.
+const cvPdf = lang === "es" ? "/cv.pdf" : "/cv.en.pdf";
+const cvPreview = lang === "es" ? "/cv-pdf" : "/en/cv-pdf";
+const cvHref = import.meta.env.PROD ? cvPdf : cvPreview;
 ---
 
 <div class="flex flex-wrap items-center gap-3">
   <a
     href={cvHref}
-    download
+    download={import.meta.env.PROD}
     class="group inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-5 py-3 text-sm font-semibold text-[var(--brand-fg)] shadow-[var(--shadow)] transition-all hover:-translate-y-0.5 hover:shadow-lg"
   >
     <svg class="size-4 transition-transform group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

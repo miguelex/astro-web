@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LegalContent from "../../components/LegalContent.astro";
+import { profile } from "../../data";
+
+const updated = "2026-05-29";
+---
+
+<BaseLayout
+  title={`Privacy policy · ${profile.name}`}
+  description="Privacy policy for the miguedelgado.dev website."
+  noindex={true}
+>
+  <LegalContent title="Privacy policy" updated={updated}>
+    <h2>Data controller</h2>
+    <p>
+      <strong>{profile.name}</strong>, owner of <strong>miguedelgado.dev</strong>.
+      Contact: <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+    </p>
+
+    <h2>What data is processed?</h2>
+    <p>
+      This is a static site and <strong>does not collect personal data
+      automatically</strong>. Data is only processed if you voluntarily write to
+      the contact email, in which case it is used solely to reply to your enquiry.
+    </p>
+
+    <h2>Cookies and local storage</h2>
+    <p>
+      This site <strong>does not use cookies</strong> or any third-party analytics
+      or tracking tools. It only uses the browser's local storage
+      (<code>localStorage</code>) to remember your theme preference (light or
+      dark). This is strictly necessary storage for that feature, contains no
+      personal data and is not shared with anyone. You can clear it at any time
+      from your browser settings.
+    </p>
+
+    <h2>Retention and disclosure</h2>
+    <p>
+      Emails you send are kept only as long as needed to handle your request. Data
+      is not shared with third parties unless legally required.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      You can exercise your rights of access, rectification, erasure, objection,
+      restriction and portability by writing to
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>. You also have the
+      right to lodge a complaint with the Spanish Data Protection Agency
+      (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).
+    </p>
+  </LegalContent>
+</BaseLayout>
