@@ -11,8 +11,11 @@ const t = useTranslations(lang);
 ---
 
 <article
-  class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--brand)]/60 hover:shadow-[var(--shadow)]"
+  class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--brand)]/60 hover:shadow-[0_20px_50px_-12px_var(--glow)]"
 >
+  <!-- línea de acento superior que aparece al hover -->
+  <div class="absolute inset-x-0 top-0 z-10 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-[var(--brand)] via-[#e2725b] to-transparent transition-transform duration-500 group-hover:scale-x-100"></div>
+
   <div class="relative aspect-[16/10] overflow-hidden">
     <img
       src={project.image}
@@ -21,17 +24,16 @@ const t = useTranslations(lang);
       decoding="async"
       width="800"
       height="500"
-      class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+      class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-60"></div>
     <span
-      class="absolute left-3 top-3 rounded-md border border-[var(--border)] bg-[var(--bg)]/70 px-2 py-1 font-mono text-[11px] text-[var(--fg-muted)] backdrop-blur"
+      class="absolute left-3 top-3 rounded-md border border-white/10 bg-black/40 px-2 py-1 font-mono text-[11px] text-white/80 backdrop-blur-sm"
     >
       {project.year}
     </span>
   </div>
 
-  <div class="flex flex-1 flex-col p-6">
+  <div class="flex flex-1 flex-col border-t border-[var(--border)] p-6">
     <h3 class="font-display text-xl font-medium tracking-[-0.01em] transition-colors group-hover:text-[var(--brand)]">
       {tField(project.title, lang)}
     </h3>
@@ -42,7 +44,7 @@ const t = useTranslations(lang);
     <ul class="mt-4 flex flex-wrap gap-1.5">
       {
         project.tech.map((tag) => (
-          <li class="rounded-md border border-[var(--border)] bg-[var(--bg-subtle)] px-2 py-0.5 font-mono text-[11px] text-[var(--fg-subtle)]">
+          <li class="rounded-md border border-[var(--brand)]/20 bg-[var(--brand)]/[0.07] px-2 py-0.5 font-mono text-[11px] text-[var(--brand)]">
             {tag}
           </li>
         ))
@@ -79,7 +81,7 @@ const t = useTranslations(lang);
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            class="group/d inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] transition-colors"
+            class="group/d ml-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] transition-colors"
           >
             {t("project.demo")}
             <svg class="size-4 transition-transform group-hover/d:translate-x-0.5 group-hover/d:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

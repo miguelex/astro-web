@@ -208,6 +208,281 @@
 }
 
 /* ===========================================================================
+   Fondo vivo: aurora animada, partículas flotantes, grano y foco al ratón
+   =========================================================================== */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+  /* atenúa los bordes para que no compita con el contenido */
+  mask-image: radial-gradient(140% 120% at 50% 0%, black 55%, transparent 100%);
+}
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.42;
+  will-change: transform;
+}
+[data-theme="dark"] .aurora {
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+.aurora-a {
+  top: -14%;
+  left: -8%;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle at 35% 35%, var(--brand), transparent 60%);
+}
+.aurora-b {
+  top: 12%;
+  right: -16%;
+  width: 36rem;
+  height: 36rem;
+  background: radial-gradient(circle at 60% 40%, #e2725b, transparent 62%);
+}
+.aurora-c {
+  bottom: -20%;
+  left: 22%;
+  width: 38rem;
+  height: 38rem;
+  opacity: 0.28;
+  background: radial-gradient(circle at 50% 50%, #2dd4bf, transparent 62%);
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.float-dot {
+  position: absolute;
+  border-radius: 9999px;
+  background: var(--brand);
+  opacity: 0.35;
+  box-shadow: 0 0 12px var(--glow);
+}
+
+/* Foco que sigue al ratón (se activa al pasar por encima) */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, -20%),
+    var(--glow),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Bloque de código con números de línea (tarjeta del hero) */
+.code {
+  counter-reset: ln;
+}
+.code-line {
+  display: block;
+  white-space: pre;
+  position: relative;
+  padding-left: 2.7rem;
+  min-height: 1.7em;
+}
+.code-line::before {
+  counter-increment: ln;
+  content: counter(ln);
+  position: absolute;
+  left: 0;
+  width: 1.85rem;
+  text-align: right;
+  color: var(--fg-subtle);
+  opacity: 0.4;
+}
+
+@keyframes aurora-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(8%, 6%) scale(1.15);
+  }
+}
+@keyframes aurora-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-9%, 5%) scale(1.12);
+  }
+}
+@keyframes aurora-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, -7%) scale(1.1);
+  }
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aurora-a {
+    animation: aurora-a 24s ease-in-out infinite;
+  }
+  .aurora-b {
+    animation: aurora-b 28s ease-in-out infinite;
+  }
+  .aurora-c {
+    animation: aurora-c 32s ease-in-out infinite;
+  }
+  .floaty {
+    animation: floaty 9s ease-in-out infinite;
+  }
+}
+
+/* ===========================================================================
+   Fondo vivo: aurora animada, partículas flotantes, grano y foco al ratón
+   =========================================================================== */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: radial-gradient(140% 120% at 50% 0%, black 55%, transparent 100%);
+}
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.42;
+  will-change: transform;
+}
+[data-theme="dark"] .aurora {
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+.aurora-a {
+  top: -14%;
+  left: -8%;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle at 35% 35%, var(--brand), transparent 60%);
+}
+.aurora-b {
+  top: 12%;
+  right: -16%;
+  width: 36rem;
+  height: 36rem;
+  background: radial-gradient(circle at 60% 40%, #e2725b, transparent 62%);
+}
+.aurora-c {
+  bottom: -20%;
+  left: 22%;
+  width: 38rem;
+  height: 38rem;
+  opacity: 0.28;
+  background: radial-gradient(circle at 50% 50%, #2dd4bf, transparent 62%);
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.float-dot {
+  position: absolute;
+  border-radius: 9999px;
+  background: var(--brand);
+  opacity: 0.35;
+  box-shadow: 0 0 12px var(--glow);
+}
+
+/* Foco que sigue al ratón (se activa al pasar por encima) */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, -20%),
+    var(--glow),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Bloque de código con números de línea (tarjeta del hero) */
+.code {
+  counter-reset: ln;
+}
+.code-line {
+  display: block;
+  white-space: pre;
+  position: relative;
+  padding-left: 2.7rem;
+  min-height: 1.7em;
+}
+.code-line::before {
+  counter-increment: ln;
+  content: counter(ln);
+  position: absolute;
+  left: 0;
+  width: 1.85rem;
+  text-align: right;
+  color: var(--fg-subtle);
+  opacity: 0.4;
+}
+
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, 6%) scale(1.15); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-9%, 5%) scale(1.12); }
+}
+@keyframes aurora-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6%, -7%) scale(1.1); }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aurora-a { animation: aurora-a 24s ease-in-out infinite; }
+  .aurora-b { animation: aurora-b 28s ease-in-out infinite; }
+  .aurora-c { animation: aurora-c 32s ease-in-out infinite; }
+  .floaty { animation: floaty 9s ease-in-out infinite; }
+}
+
+/* ===========================================================================
    Conmutador de tema: icono según el tema activo
    =========================================================================== */
 .theme-icon-dark {

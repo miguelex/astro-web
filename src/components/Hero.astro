@@ -1,23 +1,19 @@
 ---
-import { profile } from "../data";
 import SocialButtons from "./SocialButtons.astro";
 import { getLangFromUrl, useTranslations, tField } from "../i18n/utils";
+import { profile } from "../data";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const years = new Date().getFullYear() - 2010;
 ---
 
 <section class="relative overflow-hidden border-b border-[var(--border)]">
-  <!-- Atmósfera de fondo -->
   <div class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]"></div>
-  <div class="glow-spot pointer-events-none absolute -right-32 -top-32 -z-10 size-[34rem] rounded-full"></div>
-  <div class="glow-spot pointer-events-none absolute -left-40 top-40 -z-10 size-[26rem] rounded-full opacity-50"></div>
 
-  <div class="mx-auto grid max-w-5xl items-center gap-14 px-5 py-24 lg:grid-cols-[1.15fr_0.85fr] lg:py-32">
+  <div class="mx-auto grid max-w-5xl items-center gap-14 px-5 py-24 lg:grid-cols-[1.12fr_0.88fr] lg:py-32">
     <div>
-      <p class="anim inline-flex items-center gap-2.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono text-xs tracking-wide text-[var(--fg-muted)] shadow-[var(--shadow)]" style="--d:0ms">
+      <p class="anim inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono text-xs tracking-wide text-[var(--fg-muted)] shadow-[var(--shadow)]" style="--d:0ms">
         <span class="size-2 rounded-full bg-emerald-500"></span>
-        {tField(profile.location, lang)} · {t("hero.available")}
+        {tField(profile.location, lang)}
       </p>
 
       <h1 class="anim mt-6 font-display text-5xl font-light leading-[0.98] tracking-[-0.02em] sm:text-6xl lg:text-7xl" style="--d:80ms">
@@ -33,27 +29,11 @@ const years = new Date().getFullYear() - 2010;
       <div class="anim mt-9" style="--d:240ms">
         <SocialButtons />
       </div>
-
-      <!-- Métricas -->
-      <dl class="anim mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-[var(--border)] pt-7" style="--d:320ms">
-        <div>
-          <dt class="font-display text-3xl font-medium text-gradient">{years}+</dt>
-          <dd class="mt-1 font-mono text-xs uppercase tracking-wider text-[var(--fg-subtle)]">{t("hero.metric.years")}</dd>
-        </div>
-        <div>
-          <dt class="font-display text-3xl font-medium text-gradient">PHP</dt>
-          <dd class="mt-1 font-mono text-xs uppercase tracking-wider text-[var(--fg-subtle)]">{t("hero.metric.stack")}</dd>
-        </div>
-        <div>
-          <dt class="font-display text-3xl font-medium text-gradient">∞</dt>
-          <dd class="mt-1 font-mono text-xs uppercase tracking-wider text-[var(--fg-subtle)]">{t("hero.metric.learning")}</dd>
-        </div>
-      </dl>
     </div>
 
     <!-- Tarjeta de código -->
     <div class="anim-fade relative hidden lg:block" style="--d:200ms">
-      <div class="absolute -inset-3 -z-10 rounded-[1.5rem] bg-gradient-to-br from-[var(--brand)]/15 to-transparent blur-xl"></div>
+      <div class="absolute -inset-4 -z-10 rounded-[1.6rem] bg-gradient-to-br from-[var(--brand)]/20 via-[#e2725b]/10 to-transparent blur-2xl"></div>
       <div class="card overflow-hidden rounded-2xl">
         <div class="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--bg-subtle)] px-4 py-3">
           <span class="size-3 rounded-full bg-[#ff5f57]"></span>
@@ -61,20 +41,7 @@ const years = new Date().getFullYear() - 2010;
           <span class="size-3 rounded-full bg-[#28c840]"></span>
           <span class="ml-2 font-mono text-xs text-[var(--fg-subtle)]">Developer.php</span>
         </div>
-        <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-[1.7]"><code><span class="text-[var(--fg-subtle)]">&lt;?php</span>
-<span class="text-fuchsia-500/90">final class</span> <span class="text-[var(--brand)]">Developer</span> <span class="text-[var(--fg-subtle)]">extends</span> <span class="text-emerald-500/90">Human</span>
-{'{'}
-  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">string</span> $name = <span class="text-[var(--brand)]">'MD'</span>;
-  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">int</span> $years = <span class="text-emerald-500/90">{years}</span>;
-  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">array</span> $stack = [
-    <span class="text-[var(--brand)]">'PHP'</span>, <span class="text-[var(--brand)]">'Laravel'</span>, <span class="text-[var(--brand)]">'Vue'</span>,
-  ];
-
-  <span class="text-fuchsia-500/90">public function</span> <span class="text-sky-500/90">build</span>(): <span class="text-emerald-500/90">Quality</span>
-  {'{'}
-    <span class="text-fuchsia-500/90">return</span> $this-&gt;<span class="text-sky-500/90">craft</span>()-&gt;<span class="text-sky-500/90">ship</span>();
-  {'}'}
-{'}'}<span class="blink text-[var(--brand)]">▋</span></code></pre>
+        <pre class="code overflow-x-auto p-5 font-mono text-[13px] leading-[1.7]"><code><span class="code-line"><span class="text-[var(--fg-subtle)]">&lt;?php</span></span><span class="code-line"><span class="text-fuchsia-500/90">final class</span> <span class="text-[var(--brand)]">Developer</span> <span class="text-fuchsia-500/90">extends</span> <span class="text-emerald-500/90">Human</span></span><span class="code-line">{'{'}</span><span class="code-line">  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">string</span> <span class="text-[#e2725b]">$name</span> = <span class="text-[var(--brand)]">'MD'</span>;</span><span class="code-line">  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">int</span> <span class="text-[#e2725b]">$years</span> = <span class="text-emerald-500/90">15</span>;</span><span class="code-line">  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">array</span> <span class="text-[#e2725b]">$stack</span> = [</span><span class="code-line">    <span class="text-[var(--brand)]">'PHP'</span>, <span class="text-[var(--brand)]">'Laravel'</span>, <span class="text-[var(--brand)]">'Vue'</span>,</span><span class="code-line">  ];</span><span class="code-line"> </span><span class="code-line">  <span class="text-fuchsia-500/90">public function</span> <span class="text-sky-500/90">build</span>(): <span class="text-emerald-500/90">Quality</span></span><span class="code-line">  {'{'}</span><span class="code-line">    <span class="text-fuchsia-500/90">return</span> <span class="text-[#e2725b]">$this</span>-&gt;<span class="text-sky-500/90">craft</span>()-&gt;<span class="text-sky-500/90">ship</span>();</span><span class="code-line">  {'}'}</span><span class="code-line">{'}'}<span class="blink text-[var(--brand)]">▋</span></span></code></pre>
       </div>
     </div>
   </div>

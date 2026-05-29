@@ -1,17 +1,40 @@
-<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#06b6d4"/>
-      <stop offset="1" stop-color="#6366f1"/>
+    <linearGradient id="bg2" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1a100d"/>
+      <stop offset="1" stop-color="#0e0807"/>
     </linearGradient>
+    <radialGradient id="glow2" cx="0.3" cy="0.25" r="0.85">
+      <stop offset="0" stop-color="#e2725b" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#e2725b" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="800" height="450" fill="#0b0f1a"/>
-  <rect width="800" height="450" fill="url(#g2)" opacity="0.12"/>
-  <g fill="none" stroke="url(#g2)" stroke-width="3" opacity="0.5">
-    <rect x="60" y="60" width="680" height="330" rx="16"/>
-    <line x1="60" y1="120" x2="740" y2="120"/>
-    <circle cx="92" cy="90" r="7"/><circle cx="118" cy="90" r="7"/><circle cx="144" cy="90" r="7"/>
+  <rect width="800" height="500" fill="url(#bg2)"/>
+  <rect width="800" height="500" fill="url(#glow2)"/>
+  <rect x="70" y="70" width="660" height="360" rx="16" fill="#120b09" stroke="#2e1c17" stroke-width="1.5"/>
+  <line x1="70" y1="110" x2="730" y2="110" stroke="#2e1c17" stroke-width="1.5"/>
+  <circle cx="94" cy="90" r="5" fill="#ff5f57"/><circle cx="114" cy="90" r="5" fill="#febc2e"/><circle cx="134" cy="90" r="5" fill="#28c840"/>
+  <!-- método + endpoints estilo API -->
+  <g font-family="ui-monospace, monospace" font-size="16">
+    <rect x="100" y="135" width="58" height="26" rx="6" fill="#e2725b" fill-opacity="0.18" stroke="#e2725b" stroke-opacity="0.5"/>
+    <text x="111" y="153" fill="#e2725b" font-weight="700">GET</text>
+    <text x="172" y="153" fill="#cdb5ad">/api/v1/products</text>
+
+    <rect x="100" y="178" width="58" height="26" rx="6" fill="#5cb37a" fill-opacity="0.15" stroke="#5cb37a" stroke-opacity="0.45"/>
+    <text x="108" y="196" fill="#5cb37a" font-weight="700">POST</text>
+    <text x="172" y="196" fill="#cdb5ad">/api/v1/cart</text>
+
+    <rect x="100" y="221" width="58" height="26" rx="6" fill="#e0a93b" fill-opacity="0.15" stroke="#e0a93b" stroke-opacity="0.45"/>
+    <text x="110" y="239" fill="#e0a93b" font-weight="700">PUT</text>
+    <text x="172" y="239" fill="#cdb5ad">/api/v1/orders/:id</text>
   </g>
-  <text x="400" y="250" font-family="ui-monospace, monospace" font-size="42" font-weight="700" fill="url(#g2)" text-anchor="middle">{ } API REST</text>
-  <text x="400" y="300" font-family="ui-monospace, monospace" font-size="20" fill="#9ca3af" text-anchor="middle">Symfony · PostgreSQL</text>
+  <!-- bloque JSON -->
+  <rect x="100" y="272" width="600" height="138" rx="10" fill="#160d0a" stroke="#2e1c17"/>
+  <g font-family="ui-monospace, monospace" font-size="14">
+    <text x="120" y="300" fill="#7a5f57">{</text>
+    <text x="140" y="324" fill="#e2725b">"status"</text><text x="206" y="324" fill="#7a5f57">:</text><text x="218" y="324" fill="#9ec7a6">200</text><text x="248" y="324" fill="#7a5f57">,</text>
+    <text x="140" y="348" fill="#e2725b">"data"</text><text x="190" y="348" fill="#7a5f57">: [</text><text x="214" y="348" fill="#cdb5ad">{ id, name, price }</text><text x="372" y="348" fill="#7a5f57">],</text>
+    <text x="140" y="372" fill="#e2725b">"meta"</text><text x="190" y="372" fill="#7a5f57">:</text><text x="204" y="372" fill="#cdb5ad">{ page: 1, total: 248 }</text>
+    <text x="120" y="396" fill="#7a5f57">}</text>
+  </g>
 </svg>
