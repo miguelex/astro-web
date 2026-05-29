@@ -17,13 +17,15 @@
         "Responsable del módulo de control horario.",
         "Puesta en marcha del módulo de protección de datos y documentación en la nube.",
         "Mantenimiento de la web corporativa y resolución de incidencias de clientes.",
-        "Integración de modelos de IA actuales (Claude, Claude Code) en el flujo de trabajo."
+        "Integración de modelos de IA actuales (Claude, Claude Code) en el flujo de trabajo.",
+        "Mentorización de desarrolladores junior del equipo."
       ],
       "en": [
         "Owner of the time-tracking module.",
         "Launched the data protection and cloud document management module.",
         "Maintenance of the corporate website and resolution of client incidents.",
-        "Integration of current AI models (Claude, Claude Code) into the workflow."
+        "Integration of current AI models (Claude, Claude Code) into the workflow.",
+        "Mentoring of junior developers on the team."
       ]
     },
     "tech": ["PHP", "Symfony", "MySQL", "JavaScript", "HTML5", "CSS3", "Claude"]
