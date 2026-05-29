@@ -23,11 +23,11 @@
       "en": "Music festival website"
     },
     "description": {
-      "es": "Sitio web para un festival de música, con PHP en el backend y HTML, CSS y JavaScript en el frontend. Incluye secciones de cartel, horarios e información del evento.",
-      "en": "Website for a music festival, with PHP on the backend and HTML, CSS and JavaScript on the frontend. Includes line-up, schedule and event information sections."
+      "es": "Sitio web para un festival de música, maquetado con HTML5 y Sass y automatizado con Gulp, con interacciones en JavaScript. Incluye secciones de cartel, horarios e información del evento.",
+      "en": "Website for a music festival, built with HTML5 and Sass, automated with Gulp and with JavaScript interactions. Includes line-up, schedule and event information sections."
     },
     "image": "/images/projects/festival-musica.jpg",
-    "tech": ["PHP", "JavaScript", "HTML5", "Sass", "Gulp"],
+    "tech": ["HTML5", "Sass", "Gulp", "JavaScript"],
     "repo": "https://github.com/miguelex/DWC/tree/main/FestivalMusica",
     "demo": "https://festivalmusicadwc.netlify.app/",
     "featured": true,
