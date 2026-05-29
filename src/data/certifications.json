@@ -4,27 +4,31 @@
     "issuer": "Udemy",
     "date": "2024-03",
     "url": "https://www.udemy.com/certificate/ejemplo",
-    "tech": ["PHP", "Laravel"]
+    "tech": ["PHP", "Laravel"],
+    "image": null
   },
   {
     "title": "Docker y Kubernetes para desarrolladores",
     "issuer": "Coursera",
     "date": "2023-09",
     "url": "https://www.coursera.org/account/accomplishments/ejemplo",
-    "tech": ["Docker", "Kubernetes"]
+    "tech": ["Docker", "Kubernetes"],
+    "image": null
   },
   {
     "title": "TypeScript profesional",
     "issuer": "Platzi",
     "date": "2023-01",
     "url": null,
-    "tech": ["TypeScript"]
+    "tech": ["TypeScript"],
+    "image": null
   },
   {
     "title": "Diseño de APIs REST",
     "issuer": "Udemy",
     "date": "2022-05",
     "url": "https://www.udemy.com/certificate/ejemplo2",
-    "tech": ["REST", "API"]
+    "tech": ["REST", "API"],
+    "image": null
   }
 ]

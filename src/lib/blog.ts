@@ -27,3 +27,17 @@ export function formatDate(date: Date, lang: Lang): string {
     year: "numeric",
   });
 }
+
+/** Minutos de lectura estimados a partir del cuerpo del post (~200 ppm). */
+export function readingTime(post: Post): number {
+  const words = (post.body ?? "").trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+/** Gradiente determinista (mismo post -> mismo color) para la portada. */
+export function coverGradient(seed: string): string {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) % 360;
+  const h2 = (h + 48) % 360;
+  return `linear-gradient(135deg, hsl(${h} 70% 52%), hsl(${h2} 72% 46%))`;
+}

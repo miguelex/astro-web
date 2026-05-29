@@ -1,47 +1,73 @@
 ---
 import PageHeader from "./PageHeader.astro";
-import { getPosts, postSlug, formatDate } from "../lib/blog";
+import { getPosts, postSlug, formatDate, readingTime, coverGradient } from "../lib/blog";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const posts = await getPosts("es"); // el blog es siempre en español
 const base = "/blog";
+const minLabel = lang === "es" ? "min de lectura" : "min read";
 ---
 
 <PageHeader title={t("blog.title")} subtitle={t("blog.subtitle")} kicker={t("kicker.blog")} />
 
-<div class="mx-auto max-w-3xl px-5 py-16">
+<div class="mx-auto max-w-5xl px-5 py-16">
   {
     posts.length === 0 ? (
       <p class="text-[var(--fg-muted)]">{t("blog.empty")}</p>
     ) : (
-      <ul class="flex flex-col gap-4">
-        {posts.map((post) => (
-          <li class="reveal">
-            <a
-              href={`${base}/${postSlug(post.id)}`}
-              class="group block rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--brand)]/50 hover:shadow-[var(--shadow)]"
-            >
-              <div class="flex items-center gap-3 font-mono text-xs text-[var(--fg-subtle)]">
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {formatDate(post.data.pubDate, lang)}
-                </time>
-                {post.data.tags.slice(0, 2).map((tag) => (
-                  <span class="text-[var(--brand)]">#{tag}</span>
-                ))}
-              </div>
-              <h2 class="mt-2.5 font-display text-2xl font-medium tracking-[-0.01em] transition-colors group-hover:text-[var(--brand)]">
-                {post.data.title}
-              </h2>
-              <p class="mt-2 text-[var(--fg-muted)]">{post.data.description}</p>
-              <span class="mt-4 inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-[var(--brand)]">
-                {t("blog.readmore")}
-                <span class="transition-transform group-hover:translate-x-1">→</span>
-              </span>
-            </a>
-          </li>
-        ))}
+      <ul class="grid gap-6 sm:grid-cols-2">
+        {posts.map((post, i) => {
+          const slug = postSlug(post.id);
+          return (
+            <li class="reveal">
+              <a
+                href={`${base}/${slug}`}
+                class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--brand)]/50 hover:shadow-[var(--shadow)]"
+              >
+                {/* portada generada: gradiente determinista + glyph mono */}
+                <div class="relative aspect-[16/8] overflow-hidden" style={`background:${coverGradient(slug)}`}>
+                  <div
+                    class="absolute inset-0 opacity-25"
+                    style="background-image: radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 18px 18px"
+                  />
+                  <span class="absolute left-5 top-4 font-mono text-xs font-semibold text-white/80">
+                    {String(posts.length - i).padStart(2, "0")}
+                  </span>
+                  <span class="absolute bottom-3 right-4 font-mono text-6xl font-bold text-white/15">
+                    {"</>"}
+                  </span>
+                  {post.data.tags[0] && (
+                    <span class="absolute bottom-4 left-5 rounded-md bg-black/25 px-2 py-1 font-mono text-xs font-medium text-white backdrop-blur-sm">
+                      #{post.data.tags[0]}
+                    </span>
+                  )}
+                </div>
+
+                <div class="flex flex-1 flex-col p-6">
+                  <div class="flex items-center gap-3 font-mono text-xs text-[var(--fg-subtle)]">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {formatDate(post.data.pubDate, lang)}
+                    </time>
+                    <span class="size-1 rounded-full bg-[var(--fg-subtle)]" />
+                    <span>{readingTime(post)} {minLabel}</span>
+                  </div>
+                  <h2 class="mt-2.5 font-display text-xl font-medium tracking-[-0.01em] transition-colors group-hover:text-[var(--brand)]">
+                    {post.data.title}
+                  </h2>
+                  <p class="mt-2 flex-1 text-sm leading-relaxed text-[var(--fg-muted)]">
+                    {post.data.description}
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-[var(--brand)]">
+                    {t("blog.readmore")}
+                    <span class="transition-transform group-hover:translate-x-1">→</span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
       </ul>
     )
   }

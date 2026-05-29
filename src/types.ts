@@ -58,4 +58,7 @@ export interface Certification {
   date: string; // "2024-06"
   url?: string | null;
   tech?: string[];
+  /** Opcional: imagen de la credencial/curso. Si falta, se genera un banner
+   *  con el color y logo del emisor. Ruta absoluta, p. ej. "/images/certs/x.webp" */
+  image?: string | null;
 }
