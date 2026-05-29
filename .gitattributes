@@ -1,0 +1,12 @@
+# Normaliza saltos de línea: texto a LF en el repo, binarios intactos.
+* text=auto eol=lf
+
+# Binarios — nunca aplicar conversión de fin de línea
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
