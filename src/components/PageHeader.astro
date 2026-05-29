@@ -2,16 +2,27 @@
 interface Props {
   title: string;
   subtitle?: string;
+  kicker?: string;
 }
-const { title, subtitle } = Astro.props;
+const { title, subtitle, kicker } = Astro.props;
 ---
 
-<header class="border-b border-[var(--border)] bg-[var(--bg-subtle)]">
-  <div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
-    <span class="font-mono text-sm text-[var(--brand)]">// </span>
-    <h1 class="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+<header class="relative overflow-hidden border-b border-[var(--border)]">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_80%_at_30%_0%,black,transparent)]"></div>
+  <div class="glow-spot pointer-events-none absolute -right-20 -top-24 -z-10 size-80 rounded-full"></div>
+  <div class="mx-auto max-w-5xl px-5 py-20 sm:py-24">
+    <span class="anim font-mono text-xs uppercase tracking-[0.25em] text-[var(--brand)]" style="--d:0ms">
+      {kicker ?? "//"}
+    </span>
+    <h1 class="anim mt-3 font-display text-5xl font-light tracking-[-0.02em] sm:text-6xl" style="--d:80ms">
       {title}
     </h1>
-    {subtitle && <p class="mt-4 max-w-2xl text-lg text-[var(--fg-muted)]">{subtitle}</p>}
+    {
+      subtitle && (
+        <p class="anim mt-4 max-w-2xl text-lg text-[var(--fg-muted)]" style="--d:160ms">
+          {subtitle}
+        </p>
+      )
+    }
   </div>
 </header>

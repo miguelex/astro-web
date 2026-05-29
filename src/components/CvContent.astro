@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations, tField } from "../i18n/utils";
 import type { UIKey } from "../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const cvHref = lang === "es" ? "/cv.pdf" : "/cv.en.pdf";
 
 const labelKey: Record<string, UIKey> = {
   tech: "section.skills.tech",
@@ -13,110 +14,92 @@ const labelKey: Record<string, UIKey> = {
 };
 ---
 
-<div class="cv-sheet mx-auto max-w-3xl px-5 py-12">
-  <!-- Barra de acciones (no se imprime) -->
-  <div class="no-print mb-8 flex justify-end">
-    <button
-      id="cv-print"
-      type="button"
-      class="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-5 py-2.5 text-sm font-semibold text-[var(--brand-fg)] transition-transform hover:-translate-y-0.5"
+<div class="mx-auto max-w-3xl px-5 py-16">
+  <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--brand)]">{t("cv.title")}</span>
+      <h1 class="mt-2 font-display text-4xl font-light tracking-[-0.02em]">{profile.name}</h1>
+      <p class="mt-1 text-[var(--fg-muted)]">{tField(profile.role, lang)}</p>
+    </div>
+    <a
+      href={cvHref}
+      download
+      class="group inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-5 py-3 text-sm font-semibold text-[var(--brand-fg)] shadow-[var(--shadow)] transition-all hover:-translate-y-0.5"
     >
-      <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"></path>
+      <svg class="size-4 transition-transform group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
       </svg>
-      {t("cv.print")}
-    </button>
+      {t("cv.download")}
+    </a>
   </div>
 
-  <!-- Cabecera -->
-  <header class="border-b border-[var(--border)] pb-6">
-    <h1 class="font-display text-3xl font-bold tracking-tight">{profile.name}</h1>
-    <p class="mt-1 font-mono text-sm text-[var(--brand)]">{tField(profile.role, lang)}</p>
-    <div class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-[var(--fg-muted)]">
+  <div class="card rounded-2xl p-8 sm:p-10">
+    <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-[var(--border)] pb-5 text-sm text-[var(--fg-muted)]">
       <span>{profile.email}</span>
       <span>{tField(profile.location, lang)}</span>
       <a href={profile.social.linkedin} class="hover:text-[var(--brand)]">LinkedIn</a>
       <a href={profile.social.github} class="hover:text-[var(--brand)]">GitHub</a>
     </div>
-  </header>
 
-  <!-- Resumen -->
-  <section class="mt-6">
-    <p class="text-sm leading-relaxed text-[var(--fg-muted)]">{tField(profile.summary, lang)}</p>
-  </section>
+    <p class="mt-6 leading-relaxed text-[var(--fg-muted)]">{tField(profile.summary, lang)}</p>
 
-  <!-- Experiencia -->
-  <section class="mt-8">
-    <h2 class="mb-4 font-display text-lg font-bold uppercase tracking-wide">
-      {t("section.experience")}
-    </h2>
-    <div class="space-y-5">
-      {
-        experience.map((job) => (
-          <div>
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="font-semibold">
-                {tField(job.role, lang)} · <span class="font-normal">{job.company}</span>
-              </h3>
-              <span class="font-mono text-xs text-[var(--fg-subtle)]">
-                {job.start} — {job.end ?? t("present")}
-              </span>
+    <section class="mt-8">
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--brand)]">{t("section.experience")}</h2>
+      <div class="mt-4 space-y-6">
+        {
+          experience.map((job) => (
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="font-display text-lg font-medium">
+                  {tField(job.role, lang)} <span class="text-[var(--fg-subtle)]">· {job.company}</span>
+                </h3>
+                <span class="font-mono text-xs text-[var(--fg-subtle)]">
+                  {job.start} — {job.end ?? t("present")}
+                </span>
+              </div>
+              <p class="mt-1.5 text-sm leading-relaxed text-[var(--fg-muted)]">{tField(job.description, lang)}</p>
+              <ul class="mt-2 space-y-1">
+                {tField(job.highlights, lang).map((h) => (
+                  <li class="flex gap-2 text-sm text-[var(--fg-muted)]">
+                    <span class="text-[var(--brand)]">▹</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p class="mt-1 text-sm leading-relaxed text-[var(--fg-muted)]">
-              {tField(job.description, lang)}
-            </p>
-            <ul class="mt-1.5 list-disc space-y-0.5 pl-5 text-sm text-[var(--fg-muted)]">
-              {tField(job.highlights, lang).map((h) => (
-                <li>{h}</li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+          ))
+        }
+      </div>
+    </section>
 
-  <!-- Formación -->
-  <section class="mt-8">
-    <h2 class="mb-4 font-display text-lg font-bold uppercase tracking-wide">
-      {t("section.education")}
-    </h2>
-    <div class="space-y-3">
-      {
-        education.map((edu) => (
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-semibold">
-              {tField(edu.degree, lang)} · <span class="font-normal">{edu.institution}</span>
-            </h3>
-            <span class="font-mono text-xs text-[var(--fg-subtle)]">
-              {edu.start} — {edu.end}
-            </span>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+    <section class="mt-8">
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--brand)]">{t("section.education")}</h2>
+      <div class="mt-4 space-y-3">
+        {
+          education.map((edu) => (
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium">
+                {tField(edu.degree, lang)} <span class="text-[var(--fg-subtle)]">· {edu.institution}</span>
+              </h3>
+              <span class="font-mono text-xs text-[var(--fg-subtle)]">{edu.start} — {edu.end}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
 
-  <!-- Habilidades -->
-  <section class="mt-8">
-    <h2 class="mb-4 font-display text-lg font-bold uppercase tracking-wide">
-      {t("section.skills")}
-    </h2>
-    <div class="grid gap-3 sm:grid-cols-2">
-      {
-        skills.map((group) => (
-          <div>
-            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--fg-subtle)]">
-              {t(labelKey[group.category])}
-            </h3>
-            <p class="mt-1 text-sm text-[var(--fg-muted)]">{group.items.join(" · ")}</p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+    <section class="mt-8">
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--brand)]">{t("section.skills")}</h2>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        {
+          skills.map((group) => (
+            <div>
+              <h3 class="text-sm font-semibold">{t(labelKey[group.category])}</h3>
+              <p class="mt-1 text-sm text-[var(--fg-muted)]">{group.items.join(" · ")}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
 </div>
-
-<script is:inline>
-  document.getElementById("cv-print")?.addEventListener("click", () => window.print());
-</script>

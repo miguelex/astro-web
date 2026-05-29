@@ -19,8 +19,12 @@ y desarrollador fullstack PHP con 15 años de experiencia.
 - **Tailwind CSS v4** (vía `@tailwindcss/vite`, configuración CSS-first en `src/styles/global.css`).
 - **Content Collections** (MDX) para el blog — `@astrojs/mdx`.
 - **@astrojs/sitemap** para el sitemap.
-- Fuentes self-host con `@fontsource-variable`: **Space Grotesk** (display),
+- Fuentes self-host con `@fontsource-variable`: **Fraunces** (serif display),
   **Geist** (texto), **JetBrains Mono** (mono/detalles dev).
+- **Generación de PDF del CV**: `playwright` + `sirv` (devDeps). Requiere
+  `npx playwright install chromium` una vez por equipo.
+- Estética **terminal/dev sofisticado**; acento de marca **ámbar/dorado**
+  (tokens en `global.css`).
 
 ## Estructura
 
@@ -57,7 +61,9 @@ Añade un objeto a `projects.json` y coloca su imagen en `public/images/projects
 (referénciala con ruta absoluta, p. ej. `/images/projects/mi-proyecto.webp`).
 
 ### Añadir un post al blog
-Crea `src/content/blog/es/mi-post.mdx` (y/o `en/...`) con frontmatter:
+El blog es **solo en español** (`src/content/blog/es/`). Desde la web en inglés,
+el enlace "Blog" lleva igualmente a `/blog`. Crea `src/content/blog/es/mi-post.mdx`
+con frontmatter:
 ```yaml
 ---
 title: "Título"
@@ -70,10 +76,12 @@ draft: false       # true = oculto en producción
 ```
 La URL sale del nombre del fichero: `/blog/mi-post` (o `/en/blog/...`).
 
-### CV en PDF
-No hay PDF estático: la página `/cv` (y `/en/cv`) se genera desde los mismos JSON
-y el botón "Descargar CV" abre el diálogo de impresión (`window.print()`) con CSS
-de impresión que oculta cabecera/pie. Guardar como PDF desde ahí.
+### CV en PDF (ATS-friendly)
+El PDF real se genera en el build con Playwright a partir de las páginas
+`/cv-pdf` y `/en/cv-pdf` (layout `PrintLayout.astro` + `CvDocument.astro`, ambos
+alimentados por los mismos JSON). Salida: `dist/cv.pdf` y `dist/cv.en.pdf`. La
+página `/cv` (y `/en/cv`) es una vista previa web y su botón **descarga** el PDF.
+Para regenerar solo el PDF: `npm run pdf` (requiere haber hecho `build` antes).
 
 ## Comandos
 

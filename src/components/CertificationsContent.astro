@@ -12,29 +12,29 @@ const fmt = (d: string) =>
   });
 ---
 
-<PageHeader title={t("certifications.title")} subtitle={t("certifications.subtitle")} />
+<PageHeader title={t("certifications.title")} subtitle={t("certifications.subtitle")} kicker="Learning" />
 
-<div class="mx-auto max-w-5xl px-5 py-14">
+<div class="mx-auto max-w-3xl px-5 py-16">
   <ul class="grid gap-4">
     {
       sortedCertifications.map((cert) => (
-        <li class="flex flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5 transition-colors hover:border-[var(--brand)] sm:flex-row sm:items-center sm:justify-between">
+        <li class="reveal group flex flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5 transition-colors hover:border-[var(--brand)]/50 sm:flex-row sm:items-center sm:justify-between">
           <div class="flex items-start gap-4">
-            <span class="mt-0.5 grid size-10 shrink-0 place-items-center rounded-xl bg-[var(--bg-subtle)] text-[var(--brand)]">
+            <span class="mt-0.5 grid size-11 shrink-0 place-items-center rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--brand)]">
               <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="6" />
                 <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" />
               </svg>
             </span>
             <div>
-              <h2 class="font-display text-base font-bold">{cert.title}</h2>
+              <h2 class="font-display text-lg font-medium">{cert.title}</h2>
               <p class="mt-0.5 text-sm text-[var(--fg-muted)]">
                 {cert.issuer} · <span class="font-mono text-xs">{fmt(cert.date)}</span>
               </p>
               {cert.tech && (
                 <ul class="mt-2 flex flex-wrap gap-1.5">
                   {cert.tech.map((tag) => (
-                    <li class="rounded-md bg-[var(--bg-subtle)] px-2 py-0.5 font-mono text-xs text-[var(--fg-subtle)]">
+                    <li class="rounded-md border border-[var(--border)] px-2 py-0.5 font-mono text-[11px] text-[var(--fg-subtle)]">
                       {tag}
                     </li>
                   ))}
@@ -47,11 +47,11 @@ const fmt = (d: string) =>
               href={cert.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg border border-[var(--border)] px-3 py-2 text-sm font-semibold text-[var(--brand)] transition-colors hover:border-[var(--brand)] sm:self-auto"
+              class="inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg border border-[var(--border-strong)] px-3 py-2 text-sm font-semibold text-[var(--brand)] transition-colors hover:border-[var(--brand)] sm:self-auto"
             >
               {t("certifications.verify")}
               <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                <path d="M7 17L17 7M7 7h10v10" />
               </svg>
             </a>
           )}

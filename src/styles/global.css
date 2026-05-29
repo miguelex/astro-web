@@ -1,64 +1,61 @@
 @import "tailwindcss";
+@import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/geist";
-@import "@fontsource-variable/space-grotesk";
 @import "@fontsource-variable/jetbrains-mono";
 
-/* Activa el modo oscuro mediante el atributo data-theme="dark" en <html> */
+/* Modo oscuro mediante el atributo data-theme="dark" en <html> */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
   --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk Variable", "Geist Variable", ui-sans-serif, sans-serif;
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
-
-  /* Acento de marca: índigo -> cian */
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
-  --color-brand-200: #c7d2fe;
-  --color-brand-300: #a5b4fc;
-  --color-brand-400: #818cf8;
-  --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
-  --color-brand-700: #4338ca;
-  --color-brand-800: #3730a3;
-  --color-brand-900: #312e81;
-  --color-accent: #06b6d4;
 }
 
-/* Tokens semánticos de tema, conmutables claro/oscuro */
+/* ===========================================================================
+   Tokens de tema — "Editorial técnico": tinta cálida + acento ámbar/dorado
+   =========================================================================== */
 :root {
-  --bg: #ffffff;
-  --bg-subtle: #f8fafc;
+  --bg: #fbf9f4;
+  --bg-subtle: #f3efe6;
   --bg-card: #ffffff;
-  --border: #e2e8f0;
-  --fg: #0f172a;
-  --fg-muted: #475569;
-  --fg-subtle: #64748b;
-  --brand: var(--color-brand-600);
-  --brand-fg: #ffffff;
-  --ring: var(--color-brand-500);
+  --border: #e6e0d2;
+  --border-strong: #d6cdb8;
+  --fg: #1b1a17;
+  --fg-muted: #57534e;
+  --fg-subtle: #8a8378;
+  --brand: #b45309; /* ámbar-700, contraste en claro */
+  --brand-soft: #c2740f;
+  --brand-fg: #fffaf0;
+  --ring: #d97706;
+  --grid: rgba(27, 26, 23, 0.05);
+  --glow: rgba(217, 119, 6, 0.14);
+  --shadow: 0 1px 2px rgba(27, 26, 23, 0.04), 0 8px 30px rgba(27, 26, 23, 0.06);
+  color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --bg: #0b0f1a;
-  --bg-subtle: #0f1525;
-  --bg-card: #111827;
-  --border: #1f2937;
-  --fg: #e5e7eb;
-  --fg-muted: #9ca3af;
-  --fg-subtle: #6b7280;
-  --brand: var(--color-brand-400);
-  --brand-fg: #0b0f1a;
-  --ring: var(--color-brand-400);
+  --bg: #0c0b0d;
+  --bg-subtle: #141216;
+  --bg-card: #17151a;
+  --border: #2a262e;
+  --border-strong: #3a3540;
+  --fg: #efe9e0;
+  --fg-muted: #a59f97;
+  --fg-subtle: #726c66;
+  --brand: #f0b429; /* ámbar brillante en oscuro */
+  --brand-soft: #f7c948;
+  --brand-fg: #1a1400;
+  --ring: #f0b429;
+  --grid: rgba(240, 233, 224, 0.04);
+  --glow: rgba(240, 180, 41, 0.16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 50px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: light;
-  }
-  html[data-theme="dark"] {
-    color-scheme: dark;
   }
   body {
     background-color: var(--bg);
@@ -66,15 +63,136 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    font-synthesis-weight: none;
+  }
+  h1,
+  h2,
+  h3 {
+    font-optical-sizing: auto;
+    text-wrap: balance;
   }
   ::selection {
-    background-color: var(--color-brand-500);
-    color: #fff;
+    background-color: var(--brand);
+    color: var(--brand-fg);
   }
   :focus-visible {
     outline: 2px solid var(--ring);
-    outline-offset: 2px;
+    outline-offset: 3px;
     border-radius: 4px;
+  }
+  /* Scrollbar discreto */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+}
+
+/* ===========================================================================
+   Utilidades de marca
+   =========================================================================== */
+.font-display {
+  font-family: var(--font-display);
+}
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Texto con degradado cálido para acentos de titular */
+.text-gradient {
+  background: linear-gradient(120deg, var(--brand) 0%, var(--brand-soft) 60%, var(--fg) 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fondo de retícula técnica */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* Resplandor radial suave para atmósfera */
+.glow-spot {
+  background: radial-gradient(closest-side, var(--glow), transparent 75%);
+}
+
+/* Tarjeta base */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* ===========================================================================
+   Animaciones — 100% CSS. El contenido es visible por defecto: las animaciones
+   solo se aplican cuando hay soporte y el usuario no pide reducir movimiento,
+   así nunca queda nada "invisible" ni se percibe carga lenta.
+   =========================================================================== */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.05);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrada al cargar (above the fold). Usa --d para escalonar. */
+  .anim {
+    animation: fade-up 0.7s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+    animation-delay: var(--d, 0ms);
+  }
+  .anim-fade {
+    animation: fade-in 0.9s ease both;
+    animation-delay: var(--d, 0ms);
+  }
+  .drift {
+    animation: drift 18s ease-in-out infinite;
+  }
+  .blink {
+    animation: blink 1.3s steps(2, jump-none) infinite;
+  }
+
+  /* Reveal por scroll SIN JavaScript (scroll-driven CSS animations).
+     Envuelto en @supports para que, sin soporte, el contenido se vea normal. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      opacity: 0;
+      animation: fade-up 0.8s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
   }
 }
 
@@ -89,85 +207,9 @@
   }
 }
 
-/* Estilos de artículo del blog (prose minimalista, sin plugin) */
-.prose {
-  color: var(--fg-muted);
-  line-height: 1.75;
-  font-size: 1.0625rem;
-}
-.prose > * + * {
-  margin-top: 1.25em;
-}
-.prose h2,
-.prose h3,
-.prose h4 {
-  color: var(--fg);
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.25;
-  margin-top: 2em;
-  margin-bottom: 0.6em;
-}
-.prose h2 {
-  font-size: 1.6rem;
-}
-.prose h3 {
-  font-size: 1.3rem;
-}
-.prose a {
-  color: var(--brand);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.prose strong {
-  color: var(--fg);
-}
-.prose ul,
-.prose ol {
-  padding-left: 1.5em;
-}
-.prose ul {
-  list-style: disc;
-}
-.prose ol {
-  list-style: decimal;
-}
-.prose li::marker {
-  color: var(--brand);
-}
-.prose blockquote {
-  border-left: 3px solid var(--brand);
-  padding-left: 1em;
-  color: var(--fg-subtle);
-  font-style: italic;
-}
-.prose code {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 0.15em 0.4em;
-}
-.prose pre {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  padding: 1.1rem 1.25rem;
-  overflow-x: auto;
-  font-size: 0.9rem;
-}
-.prose pre code {
-  background: none;
-  border: none;
-  padding: 0;
-}
-.prose img {
-  border-radius: 0.75rem;
-  border: 1px solid var(--border);
-}
-
-/* Conmutador de tema: mostrar el icono según el tema activo */
+/* ===========================================================================
+   Conmutador de tema: icono según el tema activo
+   =========================================================================== */
 .theme-icon-dark {
   display: none;
 }
@@ -181,23 +223,113 @@
   display: none;
 }
 
-/* Utilidades de impresión para la página /cv */
+/* ===========================================================================
+   Prosa del blog
+   =========================================================================== */
+.prose {
+  color: var(--fg-muted);
+  line-height: 1.78;
+  font-size: 1.075rem;
+}
+.prose > * + * {
+  margin-top: 1.3em;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-optical-sizing: auto;
+  line-height: 1.2;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.01em;
+}
+.prose h2 {
+  font-size: 1.85rem;
+}
+.prose h3 {
+  font-size: 1.4rem;
+}
+.prose a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.prose strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+.prose ul {
+  list-style: none;
+}
+.prose ul li {
+  position: relative;
+}
+.prose ul li::before {
+  content: "▹";
+  position: absolute;
+  left: -1.3em;
+  color: var(--brand);
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose ol li::marker {
+  color: var(--brand);
+  font-family: var(--font-mono);
+}
+.prose blockquote {
+  border-left: 2px solid var(--brand);
+  padding-left: 1.1em;
+  color: var(--fg-subtle);
+  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 1.15em;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  padding: 0.15em 0.4em;
+}
+.prose pre {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 1.2rem 1.35rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.prose img {
+  border-radius: 0.85rem;
+  border: 1px solid var(--border);
+}
+
+/* ===========================================================================
+   Impresión (vista /cv web). El PDF de verdad se genera aparte con Playwright.
+   =========================================================================== */
 @media print {
   .no-print,
-  header,
+  header.site-header,
   footer {
     display: none !important;
   }
   body {
     background: #fff !important;
     color: #000 !important;
-  }
-  .cv-sheet {
-    max-width: none !important;
-    padding: 0 !important;
-  }
-  a {
-    color: #000 !important;
-    text-decoration: none !important;
   }
 }

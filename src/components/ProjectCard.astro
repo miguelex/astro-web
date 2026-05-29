@@ -11,37 +11,38 @@ const t = useTranslations(lang);
 ---
 
 <article
-  class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] transition-all hover:-translate-y-1 hover:border-[var(--brand)] hover:shadow-lg hover:shadow-[var(--brand)]/5"
+  class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--brand)]/60 hover:shadow-[var(--shadow)]"
 >
-  <div class="relative aspect-[16/9] overflow-hidden border-b border-[var(--border)]">
+  <div class="relative aspect-[16/10] overflow-hidden">
     <img
       src={project.image}
       alt={tField(project.title, lang)}
       loading="lazy"
       decoding="async"
       width="800"
-      height="450"
-      class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+      height="500"
+      class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
     />
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-60"></div>
     <span
-      class="absolute right-3 top-3 rounded-md bg-[var(--bg)]/80 px-2 py-1 font-mono text-xs text-[var(--fg-muted)] backdrop-blur"
+      class="absolute left-3 top-3 rounded-md border border-[var(--border)] bg-[var(--bg)]/70 px-2 py-1 font-mono text-[11px] text-[var(--fg-muted)] backdrop-blur"
     >
       {project.year}
     </span>
   </div>
 
   <div class="flex flex-1 flex-col p-6">
-    <h3 class="font-display text-lg font-bold tracking-tight">
+    <h3 class="font-display text-xl font-medium tracking-[-0.01em] transition-colors group-hover:text-[var(--brand)]">
       {tField(project.title, lang)}
     </h3>
-    <p class="mt-2 flex-1 text-sm leading-relaxed text-[var(--fg-muted)]">
+    <p class="mt-2.5 flex-1 text-sm leading-relaxed text-[var(--fg-muted)]">
       {tField(project.description, lang)}
     </p>
 
     <ul class="mt-4 flex flex-wrap gap-1.5">
       {
         project.tech.map((tag) => (
-          <li class="rounded-md bg-[var(--bg-subtle)] px-2 py-0.5 font-mono text-xs text-[var(--fg-subtle)]">
+          <li class="rounded-md border border-[var(--border)] bg-[var(--bg-subtle)] px-2 py-0.5 font-mono text-[11px] text-[var(--fg-subtle)]">
             {tag}
           </li>
         ))
@@ -78,12 +79,12 @@ const t = useTranslations(lang);
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] transition-colors hover:underline"
+            class="group/d inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] transition-colors"
           >
-            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-            </svg>
             {t("project.demo")}
+            <svg class="size-4 transition-transform group-hover/d:translate-x-0.5 group-hover/d:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17L17 7M7 7h10v10" />
+            </svg>
           </a>
         )
       }

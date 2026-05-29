@@ -1,62 +1,80 @@
 ---
 import { profile } from "../data";
 import SocialButtons from "./SocialButtons.astro";
-import { getLangFromUrl, tField } from "../i18n/utils";
+import { getLangFromUrl, useTranslations, tField } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const years = new Date().getFullYear() - 2010;
 ---
 
-<section class="relative overflow-hidden">
-  <!-- malla de fondo sutil -->
-  <div
-    class="pointer-events-none absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
-    style="background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px); background-size: 48px 48px;"
-    aria-hidden="true"
-  >
-  </div>
+<section class="relative overflow-hidden border-b border-[var(--border)]">
+  <!-- Atmósfera de fondo -->
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]"></div>
+  <div class="glow-spot pointer-events-none absolute -right-32 -top-32 -z-10 size-[34rem] rounded-full"></div>
+  <div class="glow-spot pointer-events-none absolute -left-40 top-40 -z-10 size-[26rem] rounded-full opacity-50"></div>
 
-  <div class="mx-auto grid max-w-5xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
+  <div class="mx-auto grid max-w-5xl items-center gap-14 px-5 py-24 lg:grid-cols-[1.15fr_0.85fr] lg:py-32">
     <div>
-      <p class="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-card)] px-3 py-1 font-mono text-xs text-[var(--fg-muted)]">
+      <p class="anim inline-flex items-center gap-2.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-1.5 font-mono text-xs tracking-wide text-[var(--fg-muted)] shadow-[var(--shadow)]" style="--d:0ms">
         <span class="size-2 rounded-full bg-emerald-500"></span>
-        {tField(profile.location, lang)}
+        {tField(profile.location, lang)} · {t("hero.available")}
       </p>
 
-      <h1 class="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-        {profile.name}
+      <h1 class="anim mt-6 font-display text-5xl font-light leading-[0.98] tracking-[-0.02em] sm:text-6xl lg:text-7xl" style="--d:80ms">
+        Miguel Ángel
+        <span class="block italic text-gradient">Delgado</span>
       </h1>
-      <p class="mt-4 font-mono text-base text-[var(--brand)] sm:text-lg">
-        {tField(profile.role, lang)}
-      </p>
-      <p class="mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-muted)]">
-        {tField(profile.summary, lang)}
+
+      <p class="anim mt-6 max-w-xl text-lg leading-relaxed text-[var(--fg-muted)]" style="--d:160ms">
+        <span class="font-medium text-[var(--fg)]">{tField(profile.role, lang)}.</span>
+        {tField(profile.tagline, lang)}
       </p>
 
-      <div class="mt-8">
+      <div class="anim mt-9" style="--d:240ms">
         <SocialButtons />
       </div>
+
+      <!-- Métricas -->
+      <dl class="anim mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-[var(--border)] pt-7" style="--d:320ms">
+        <div>
+          <dt class="font-display text-3xl font-medium text-gradient">{years}+</dt>
+          <dd class="mt-1 font-mono text-xs uppercase tracking-wider text-[var(--fg-subtle)]">{t("hero.metric.years")}</dd>
+        </div>
+        <div>
+          <dt class="font-display text-3xl font-medium text-gradient">PHP</dt>
+          <dd class="mt-1 font-mono text-xs uppercase tracking-wider text-[var(--fg-subtle)]">{t("hero.metric.stack")}</dd>
+        </div>
+        <div>
+          <dt class="font-display text-3xl font-medium text-gradient">∞</dt>
+          <dd class="mt-1 font-mono text-xs uppercase tracking-wider text-[var(--fg-subtle)]">{t("hero.metric.learning")}</dd>
+        </div>
+      </dl>
     </div>
 
-    <!-- Tarjeta de código decorativa -->
-    <div class="relative hidden lg:block">
-      <div class="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] shadow-xl shadow-black/5">
+    <!-- Tarjeta de código -->
+    <div class="anim-fade relative hidden lg:block" style="--d:200ms">
+      <div class="absolute -inset-3 -z-10 rounded-[1.5rem] bg-gradient-to-br from-[var(--brand)]/15 to-transparent blur-xl"></div>
+      <div class="card overflow-hidden rounded-2xl">
         <div class="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--bg-subtle)] px-4 py-3">
-          <span class="size-3 rounded-full bg-red-400/80"></span>
-          <span class="size-3 rounded-full bg-amber-400/80"></span>
-          <span class="size-3 rounded-full bg-emerald-400/80"></span>
-          <span class="ml-2 font-mono text-xs text-[var(--fg-subtle)]">developer.php</span>
+          <span class="size-3 rounded-full bg-[#ff5f57]"></span>
+          <span class="size-3 rounded-full bg-[#febc2e]"></span>
+          <span class="size-3 rounded-full bg-[#28c840]"></span>
+          <span class="ml-2 font-mono text-xs text-[var(--fg-subtle)]">Developer.php</span>
         </div>
-        <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed"><code><span class="text-violet-500">class</span> <span class="text-[var(--brand)]">Developer</span> {'{'}
-  <span class="text-violet-500">public</span> <span class="text-emerald-500">string</span> $name = <span class="text-amber-500">'{profile.initials}'</span>;
-  <span class="text-violet-500">public</span> <span class="text-emerald-500">int</span> $years = <span class="text-cyan-500">15</span>;
-  <span class="text-violet-500">public</span> <span class="text-emerald-500">array</span> $stack = [
-    <span class="text-amber-500">'PHP'</span>, <span class="text-amber-500">'Laravel'</span>,
-    <span class="text-amber-500">'Vue'</span>, <span class="text-amber-500">'MySQL'</span>,
+        <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-[1.7]"><code><span class="text-[var(--fg-subtle)]">&lt;?php</span>
+<span class="text-fuchsia-500/90">final class</span> <span class="text-[var(--brand)]">Developer</span> <span class="text-[var(--fg-subtle)]">extends</span> <span class="text-emerald-500/90">Human</span>
+{'{'}
+  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">string</span> $name = <span class="text-[var(--brand)]">'MD'</span>;
+  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">int</span> $years = <span class="text-emerald-500/90">{years}</span>;
+  <span class="text-fuchsia-500/90">public</span> <span class="text-sky-500/90">array</span> $stack = [
+    <span class="text-[var(--brand)]">'PHP'</span>, <span class="text-[var(--brand)]">'Laravel'</span>, <span class="text-[var(--brand)]">'Vue'</span>,
   ];
 
-  <span class="text-violet-500">public function</span> <span class="text-[var(--brand)]">code</span>(): <span class="text-emerald-500">void</span> {'{'}
-    <span class="text-violet-500">while</span> (<span class="text-cyan-500">true</span>) $this-&gt;<span class="text-[var(--brand)]">learn</span>();
+  <span class="text-fuchsia-500/90">public function</span> <span class="text-sky-500/90">build</span>(): <span class="text-emerald-500/90">Quality</span>
+  {'{'}
+    <span class="text-fuchsia-500/90">return</span> $this-&gt;<span class="text-sky-500/90">craft</span>()-&gt;<span class="text-sky-500/90">ship</span>();
   {'}'}
-{'}'}</code></pre>
+{'}'}<span class="blink text-[var(--brand)]">▋</span></code></pre>
       </div>
     </div>
   </div>

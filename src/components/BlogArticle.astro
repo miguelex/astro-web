@@ -9,32 +9,31 @@ interface Props {
 const { post } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const backHref = lang === "es" ? "/blog" : "/en/blog";
 ---
 
-<article class="mx-auto max-w-3xl px-5 py-14">
+<article class="mx-auto max-w-2xl px-5 py-16">
   <a
-    href={backHref}
-    class="inline-flex items-center gap-1.5 font-mono text-sm text-[var(--fg-muted)] transition-colors hover:text-[var(--brand)]"
+    href="/blog"
+    class="group inline-flex items-center gap-1.5 font-mono text-sm text-[var(--fg-muted)] transition-colors hover:text-[var(--brand)]"
   >
-    <span class="transition-transform group-hover:-translate-x-1">←</span>
+    <span class="inline-block transition-transform group-hover:-translate-x-1">←</span>
     {t("blog.back")}
   </a>
 
-  <header class="mt-8 border-b border-[var(--border)] pb-8">
+  <header class="anim mt-8 border-b border-[var(--border)] pb-8" style="--d:60ms">
     <div class="flex flex-wrap items-center gap-3 font-mono text-xs text-[var(--fg-subtle)]">
       <time datetime={post.data.pubDate.toISOString()}>
         {formatDate(post.data.pubDate, lang)}
       </time>
       {post.data.tags.map((tag) => <span class="text-[var(--brand)]">#{tag}</span>)}
     </div>
-    <h1 class="mt-3 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+    <h1 class="mt-3.5 font-display text-4xl font-light leading-[1.05] tracking-[-0.02em] sm:text-5xl">
       {post.data.title}
     </h1>
-    <p class="mt-3 text-lg text-[var(--fg-muted)]">{post.data.description}</p>
+    <p class="mt-4 text-lg leading-relaxed text-[var(--fg-muted)]">{post.data.description}</p>
   </header>
 
-  <div class="prose mt-8">
+  <div class="prose anim mt-9" style="--d:140ms">
     <slot />
   </div>
 </article>

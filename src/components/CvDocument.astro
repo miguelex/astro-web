@@ -1,0 +1,94 @@
+---
+import { profile, skills, experience, education } from "../data";
+import { useTranslations, tField } from "../i18n/utils";
+import type { Lang, UIKey } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const labelKey: Record<string, UIKey> = {
+  tech: "section.skills.tech",
+  tools: "section.skills.tools",
+  databases: "section.skills.databases",
+  soft: "section.skills.soft",
+};
+// LinkedIn/GitHub en texto plano legible para ATS
+const cleanUrl = (u: string) => u.replace(/^https?:\/\/(www\.)?/, "");
+---
+
+<header>
+  <h1>{profile.name}</h1>
+  <div class="role">{tField(profile.role, lang)}</div>
+  <div class="contact">
+    <span>{profile.email}</span>
+    <span>{tField(profile.location, lang)}</span>
+    <span>{cleanUrl(profile.social.linkedin)}</span>
+    <span>{cleanUrl(profile.social.github)}</span>
+  </div>
+</header>
+<hr />
+
+<section>
+  <p class="summary">{tField(profile.summary, lang)}</p>
+</section>
+
+<section>
+  <h2>{t("section.experience")}</h2>
+  {
+    experience.map((job) => (
+      <div class="item">
+        <div class="item-head">
+          <div class="item-title">
+            {tField(job.role, lang)} <span class="item-org">· {job.company}</span>
+          </div>
+          <div class="item-date">
+            {job.start} – {job.end ?? t("present")}
+          </div>
+        </div>
+        <div class="item-desc">{tField(job.description, lang)}</div>
+        <ul class="bullets">
+          {tField(job.highlights, lang).map((h) => (
+            <li>{h}</li>
+          ))}
+        </ul>
+        <div class="item-desc" style="margin-top:3pt;font-size:9pt;color:#666;">
+          {job.tech.join(" · ")}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<section>
+  <h2>{t("section.education")}</h2>
+  {
+    education.map((edu) => (
+      <div class="edu-row">
+        <div>
+          <span class="item-title">{tField(edu.degree, lang)}</span>
+          <span class="item-org"> · {edu.institution}</span>
+        </div>
+        <div class="item-date">
+          {edu.start} – {edu.end}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<section>
+  <h2>{t("section.skills")}</h2>
+  <div class="skills-grid">
+    {
+      skills.map((group) => (
+        <div>
+          <div class="skill-cat">{t(labelKey[group.category])}</div>
+          <div class="skill-items">{group.items.join(", ")}</div>
+        </div>
+      ))
+    }
+  </div>
+</section>

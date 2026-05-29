@@ -7,11 +7,9 @@ const lang = getLangFromUrl(Astro.url);
 <div class="grid gap-4 sm:grid-cols-2">
   {
     education.map((edu) => (
-      <div class="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 transition-colors hover:border-[var(--brand)]">
-        <span class="font-mono text-xs text-[var(--brand)]">
-          {edu.start} — {edu.end}
-        </span>
-        <h3 class="mt-2 font-display text-lg font-bold">{tField(edu.degree, lang)}</h3>
+      <div class="reveal group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 transition-colors hover:border-[var(--brand)]/50">
+        <span class="font-mono text-xs text-[var(--brand)]">{edu.start} — {edu.end}</span>
+        <h3 class="mt-2 font-display text-xl font-medium">{tField(edu.degree, lang)}</h3>
         <p class="mt-1 text-sm font-medium text-[var(--fg-muted)]">{edu.institution}</p>
         {edu.description && (
           <p class="mt-3 text-sm leading-relaxed text-[var(--fg-muted)]">

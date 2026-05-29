@@ -18,6 +18,8 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      // Excluye las páginas de impresión y el CV (noindex) del sitemap.
+      filter: (page) => !/\/cv-pdf\/?$|\/cv\/?$/.test(page),
       i18n: {
         defaultLocale: "es",
         locales: { es: "es-ES", en: "en-US" },

@@ -5,24 +5,25 @@ import type { UIKey } from "../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const labelKey: Record<string, UIKey> = {
-  tech: "section.skills.tech",
-  tools: "section.skills.tools",
-  databases: "section.skills.databases",
-  soft: "section.skills.soft",
+const meta: Record<string, { key: UIKey; n: string }> = {
+  tech: { key: "section.skills.tech", n: "01" },
+  tools: { key: "section.skills.tools", n: "02" },
+  databases: { key: "section.skills.databases", n: "03" },
+  soft: { key: "section.skills.soft", n: "04" },
 };
 ---
 
 <div class="grid gap-5 sm:grid-cols-2">
   {
     skills.map((group) => (
-      <div class="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 transition-colors hover:border-[var(--brand)]">
-        <h3 class="mb-4 font-mono text-sm font-semibold uppercase tracking-wider text-[var(--fg-subtle)]">
-          {t(labelKey[group.category])}
-        </h3>
+      <div class="reveal group rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 transition-colors hover:border-[var(--brand)]/50">
+        <div class="mb-5 flex items-center justify-between">
+          <h3 class="font-display text-lg font-medium">{t(meta[group.category].key)}</h3>
+          <span class="font-mono text-xs text-[var(--fg-subtle)]">{meta[group.category].n}</span>
+        </div>
         <ul class="flex flex-wrap gap-2">
           {group.items.map((item) => (
-            <li class="rounded-lg border border-[var(--border)] bg-[var(--bg-subtle)] px-3 py-1.5 text-sm text-[var(--fg-muted)]">
+            <li class="rounded-lg border border-[var(--border)] bg-[var(--bg-subtle)] px-3 py-1.5 text-sm text-[var(--fg-muted)] transition-colors hover:border-[var(--brand)]/40 hover:text-[var(--fg)]">
               {item}
             </li>
           ))}

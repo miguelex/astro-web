@@ -1,10 +1,12 @@
 ---
 /**
- * Logo / monograma MD (Miguel Delgado).
- * Letras M y D dibujadas como trazos geométricos dentro de una "etiqueta" de
- * código, con un cursor parpadeante a modo de guiño a la programación.
- * - Por defecto usa un degradado de marca (índigo -> cian).
- * - Con `mono` usa `currentColor` para adaptarse a cualquier color/tema.
+ * Monograma MD (Miguel Delgado) — versión refinada.
+ * Una "M" y una "D" trazadas como una sola pieza geométrica continua dentro de
+ * un sello de esquinas redondeadas, con marcas técnicas (guía superior y cursor)
+ * que evocan un editor de código sin caer en lo literal.
+ *
+ * - Por defecto usa el degradado de marca (ámbar).
+ * - Con `mono` usa `currentColor` (se adapta a cualquier color/tema).
  */
 interface Props {
   class?: string;
@@ -12,15 +14,16 @@ interface Props {
   mono?: boolean;
   title?: string;
 }
-const { class: className, size = 40, mono = false, title = "MD" } = Astro.props;
+const { class: className, size = 40, mono = false, title = "Miguel Delgado" } = Astro.props;
 const uid = "lg" + Math.random().toString(36).slice(2, 8);
+const stroke = mono ? "currentColor" : `url(#${uid}-s)`;
 ---
 
 <svg
   class={className}
   width={size}
   height={size}
-  viewBox="0 0 64 64"
+  viewBox="0 0 48 48"
   fill="none"
   role="img"
   aria-label={title}
@@ -29,50 +32,68 @@ const uid = "lg" + Math.random().toString(36).slice(2, 8);
   {
     !mono && (
       <defs>
-        <linearGradient id={`${uid}-bg`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#4f46e5" />
-          <stop offset="1" stop-color="#06b6d4" />
+        <linearGradient id={`${uid}-s`} x1="6" y1="8" x2="42" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f7c948" />
+          <stop offset="0.55" stop-color="#f0b429" />
+          <stop offset="1" stop-color="#b45309" />
+        </linearGradient>
+        <linearGradient id={`${uid}-b`} x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="currentColor" stop-opacity="0.9" />
+          <stop offset="1" stop-color="currentColor" stop-opacity="0.55" />
         </linearGradient>
       </defs>
     )
   }
 
-  <!-- Placa redondeada -->
+  <!-- Sello -->
   <rect
-    x="2"
-    y="2"
-    width="60"
-    height="60"
-    rx="14"
-    fill={mono ? "none" : `url(#${uid}-bg)`}
-    stroke={mono ? "currentColor" : "none"}
-    stroke-width={mono ? 3 : 0}
+    x="1.25"
+    y="1.25"
+    width="45.5"
+    height="45.5"
+    rx="13"
+    fill="none"
+    stroke={mono ? "currentColor" : "var(--border-strong, currentColor)"}
+    stroke-opacity={mono ? "0.35" : "0.9"}
+    stroke-width="1.5"
   />
 
-  <g
-    stroke={mono ? "currentColor" : "#ffffff"}
-    stroke-width="4.5"
+  <!-- Guía superior (regla del editor) -->
+  <line
+    x1="9"
+    y1="11.5"
+    x2="39"
+    y2="11.5"
+    stroke={stroke}
+    stroke-width="1.4"
+    stroke-linecap="round"
+    stroke-opacity="0.45"
+  />
+
+  <!-- Monograma MD: M (zigzag) encadenada con el asta y el cuenco de la D -->
+  <path
+    d="M11 35 V18 L18.5 27 L26 18 V35"
+    stroke={stroke}
+    stroke-width="3.4"
     stroke-linecap="round"
     stroke-linejoin="round"
-  >
-    <!-- M -->
-    <path d="M14 44 V20 L24 34 L34 20 V44" />
-    <!-- D (trazo vertical + cuenco) -->
-    <path d="M42 20 V44" />
-    <path d="M42 20 C54 20 55 27 55 32 C55 37 54 44 42 44" />
-  </g>
+  />
+  <path
+    d="M30 18 V35 M30 18 C38.5 18 41 22.5 41 26.5 C41 30.5 38.5 35 30 35"
+    stroke={stroke}
+    stroke-width="3.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 
-  <!-- Cursor de código (guiño dev) -->
-  {
-    !mono && (
-      <rect x="44" y="48.5" width="9" height="3.5" rx="1.5" fill="#ffffff" opacity="0.9">
-        <animate
-          attributeName="opacity"
-          values="0.9;0.15;0.9"
-          dur="1.4s"
-          repeatCount="indefinite"
-        />
-      </rect>
-    )
-  }
+  <!-- Cursor de código -->
+  <rect
+    x="30"
+    y="39"
+    width="11"
+    height="2.6"
+    rx="1.3"
+    fill={stroke}
+    class={mono ? "" : "blink"}
+  />
 </svg>
