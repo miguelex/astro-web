@@ -23,8 +23,9 @@ y desarrollador fullstack PHP con 15 años de experiencia.
   **Geist** (texto), **JetBrains Mono** (mono/detalles dev).
 - **Generación de PDF del CV**: `playwright` + `sirv` (devDeps). Requiere
   `npx playwright install chromium` una vez por equipo.
-- Estética **terminal/dev sofisticado**; acento de marca **ámbar/dorado**
-  (tokens en `global.css`).
+- Estética **terminal/dev sofisticado**; acento de marca **azul-cian** sobre
+  neutros slate (tokens en `global.css`). Acentos multicolor por categoría en
+  skills. Logos de tecnología vía `simple-icons` (`src/lib/techIcons.ts`).
 
 ## Estructura
 
