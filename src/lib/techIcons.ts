@@ -23,6 +23,8 @@ const exportKey: Record<string, string> = {
   HTML5: "siHtml5",
   CSS3: "siCss",
   "Tailwind CSS": "siTailwindcss",
+  Sass: "siSass",
+  Gulp: "siGulp",
   "Node.js": "siNodedotjs",
   Git: "siGit",
   Docker: "siDocker",

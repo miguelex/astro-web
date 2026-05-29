@@ -10,7 +10,7 @@
       "en": "Responsive blog about the world of coffee, built exclusively with HTML5 and CSS following the BEM methodology for scalable, maintainable CSS. Texts are placeholders."
     },
     "image": "/images/projects/blog-de-cafe.jpg",
-    "tech": ["HTML5", "CSS3", "BEM"],
+    "tech": ["HTML5", "CSS3", "Flexbox", "BEM"],
     "repo": "https://github.com/miguelex/DWC/tree/main/blogdecafe",
     "demo": "https://migueblogdecafe.netlify.app/",
     "featured": true,
@@ -27,7 +27,7 @@
       "en": "Website for a music festival, with PHP on the backend and HTML, CSS and JavaScript on the frontend. Includes line-up, schedule and event information sections."
     },
     "image": "/images/projects/festival-musica.jpg",
-    "tech": ["PHP", "JavaScript", "HTML5", "CSS3"],
+    "tech": ["PHP", "JavaScript", "HTML5", "Sass", "Gulp"],
     "repo": "https://github.com/miguelex/DWC/tree/main/FestivalMusica",
     "demo": "https://festivalmusicadwc.netlify.app/",
     "featured": true,
