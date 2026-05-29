@@ -25,6 +25,7 @@ export default defineConfig({
     }),
   ],
   vite: {
-    plugins: [tailwindcss()],
+    // cast: el tipo de @tailwindcss/vite y el de Vite de Astro difieren ligeramente
+    plugins: /** @type {any} */ ([tailwindcss()]),
   },
 });
