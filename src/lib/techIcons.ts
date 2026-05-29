@@ -17,6 +17,8 @@ const exportKey: Record<string, string> = {
   Bootstrap: "siBootstrap",
   Java: "siOpenjdk",
   Kotlin: "siKotlin",
+  "C#": "siSharp",
+  ".NET": "siDotnet",
   Claude: "siClaude",
   "Claude Code": "siClaude",
   GitHub: "siGithub",

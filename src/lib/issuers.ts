@@ -21,18 +21,16 @@ interface IssuerStyle {
  */
 const issuers: Record<string, { color: string; siKey?: string }> = {
   udemy: { color: "#A435F0" },
-  coursera: { color: "#0056D2", siKey: "siCoursera" },
-  platzi: { color: "#98CA3F" },
-  pluralsight: { color: "#F15B2A", siKey: "siPluralsight" },
+  devtalles: { color: "#8B5CF6" },
+  frogames: { color: "#22C55E" },
+  mouredev: { color: "#27272A" },
+  "mouredev pro": { color: "#27272A" },
+  "metal code": { color: "#F97316" },
+  metalcode: { color: "#F97316" },
+  holamundo: { color: "#E2E8F0" },
+  "hola mundo": { color: "#E2E8F0" },
   "linkedin learning": { color: "#0A66C2", siKey: "siLinkedin" },
   linkedin: { color: "#0A66C2", siKey: "siLinkedin" },
-  freecodecamp: { color: "#0A0A23", siKey: "siFreecodecamp" },
-  edx: { color: "#02262B" },
-  google: { color: "#4285F4", siKey: "siGoogle" },
-  "google cloud": { color: "#4285F4", siKey: "siGooglecloud" },
-  aws: { color: "#FF9900", siKey: "siAmazonwebservices" },
-  "amazon web services": { color: "#FF9900", siKey: "siAmazonwebservices" },
-  microsoft: { color: "#0078D4", siKey: "siMicrosoft" },
 };
 
 const FALLBACK = "#38bdf8";

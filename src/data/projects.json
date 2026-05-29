@@ -1,20 +1,37 @@
 [
   {
-    "slug": "blog-de-cafe",
+    "slug": "php-template",
     "title": {
-      "es": "Blog de café",
-      "en": "Coffee blog"
+      "es": "Plantilla PHP 8.2 (Composer/Packagist)",
+      "en": "PHP 8.2 starter template (Composer/Packagist)"
     },
     "description": {
-      "es": "Blog responsive sobre el mundo del café, maquetado exclusivamente con HTML5 y CSS siguiendo la metodología BEM para lograr un CSS escalable y mantenible. Los textos son de ejemplo.",
-      "en": "Responsive blog about the world of coffee, built exclusively with HTML5 and CSS following the BEM methodology for scalable, maintainable CSS. Texts are placeholders."
+      "es": "Plantilla base para arrancar proyectos PHP 8.2 con arquitectura MVC propia, ORM ActiveRecord, tooling moderno (PHPStan, Pest, PHPUnit), bundler a elegir entre Gulp y Vite, CI/CD en GitHub Actions y ficheros listos para agentes IA. Publicada en Packagist.",
+      "en": "Starter template for PHP 8.2 projects with a homegrown MVC architecture, ActiveRecord ORM, modern tooling (PHPStan, Pest, PHPUnit), a choice of Gulp or Vite as bundler, CI/CD via GitHub Actions and ready-to-use AI agent files. Published on Packagist."
     },
-    "image": "/images/projects/blog-de-cafe.jpg",
-    "tech": ["HTML5", "CSS3", "Flexbox", "BEM"],
-    "repo": "https://github.com/miguelex/DWC/tree/main/blogdecafe",
-    "demo": "https://migueblogdecafe.netlify.app/",
+    "image": "/images/projects/php-template.jpg",
+    "tech": ["PHP", "Composer", "Sass", "Vite", "Gulp"],
+    "repo": "https://github.com/miguelex/php-template",
+    "demo": "https://packagist.org/packages/miguelex/php-template",
     "featured": true,
-    "year": "2023"
+    "year": "2026"
+  },
+  {
+    "slug": "asinco",
+    "title": {
+      "es": "Web corporativa de ASINCO",
+      "en": "ASINCO corporate website"
+    },
+    "description": {
+      "es": "Renovación de la web de ASINCO Abogados y Asesores (asesoría fiscal, jurídica y laboral): transformación de su imagen tradicional a una identidad tecnológica y moderna, fiel a una asesoría que se adapta a los nuevos tiempos. Construida con PHP, HTML, Tailwind CSS y JavaScript.",
+      "en": "Redesign of the corporate website for ASINCO Abogados y Asesores (tax, legal and labour advisory): shifting their traditional image toward a modern, tech-driven identity that reflects a firm adapting to new times. Built with PHP, HTML, Tailwind CSS and JavaScript."
+    },
+    "image": "/images/projects/asinco.jpg",
+    "tech": ["PHP", "HTML5", "Tailwind CSS", "JavaScript"],
+    "repo": null,
+    "demo": "https://asinco.net",
+    "featured": true,
+    "year": "2022"
   },
   {
     "slug": "festival-musica",
@@ -34,6 +51,23 @@
     "year": "2023"
   },
   {
+    "slug": "blog-de-cafe",
+    "title": {
+      "es": "Blog de café",
+      "en": "Coffee blog"
+    },
+    "description": {
+      "es": "Blog responsive sobre el mundo del café, maquetado exclusivamente con HTML5 y CSS siguiendo la metodología BEM para lograr un CSS escalable y mantenible. Los textos son de ejemplo.",
+      "en": "Responsive blog about the world of coffee, built exclusively with HTML5 and CSS following the BEM methodology for scalable, maintainable CSS. Texts are placeholders."
+    },
+    "image": "/images/projects/blog-de-cafe.jpg",
+    "tech": ["HTML5", "CSS3", "Flexbox", "BEM"],
+    "repo": "https://github.com/miguelex/DWC/tree/main/blogdecafe",
+    "demo": "https://migueblogdecafe.netlify.app/",
+    "featured": false,
+    "year": "2023"
+  },
+  {
     "slug": "rick-morty-api",
     "title": {
       "es": "Explorador de Rick & Morty",
@@ -47,7 +81,7 @@
     "tech": ["React", "JavaScript"],
     "repo": "https://github.com/miguelex/rickmorty",
     "demo": "https://miguelanrickandmortyapi.netlify.app/",
-    "featured": true,
+    "featured": false,
     "year": "2022"
   }
 ]

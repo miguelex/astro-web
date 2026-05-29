@@ -1,34 +1,50 @@
 [
   {
-    "title": "PHP & Laravel: arquitectura avanzada",
+    "title": "Desarrollo web completo con HTML5, CSS3, JS, PHP y MySQL",
     "issuer": "Udemy",
-    "date": "2024-03",
-    "url": "https://www.udemy.com/certificate/ejemplo",
+    "date": "2025-11",
+    "url": "https://www.udemy.com/certificate/UC-9eb6356b-cf2c-4da4-8490-d19bc92d6d27/",
+    "tech": ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL"],
+    "image": "/images/certifications/udemy-desarrollo-web-completo.jpg"
+  },
+  {
+    "title": "GIT + GitHub: Todo un sistema de control de versiones desde cero",
+    "issuer": "DevTalles",
+    "date": "2025-09",
+    "url": "https://cursos.devtalles.com/certificates/x5tan2gpi8",
+    "tech": ["Git", "GitHub"],
+    "image": "/images/certifications/devtalles-git-github.jpg"
+  },
+  {
+    "title": "Curso de Programación Backend en PHP Laravel",
+    "issuer": "Metal Code",
+    "date": "2025-08",
+    "url": "https://courses.metalcode.io/certificates/rrfnlcgj7d",
     "tech": ["PHP", "Laravel"],
-    "image": null
+    "image": "/images/certifications/metalcode-backend-laravel.jpg"
   },
   {
-    "title": "Docker y Kubernetes para desarrolladores",
-    "issuer": "Coursera",
-    "date": "2023-09",
-    "url": "https://www.coursera.org/account/accomplishments/ejemplo",
-    "tech": ["Docker", "Kubernetes"],
-    "image": null
+    "title": "Git y GitHub desde cero",
+    "issuer": "MoureDev Pro",
+    "date": "2025-04",
+    "url": "https://campus.mouredev.pro/certificates/38wqpfq9hh",
+    "tech": ["Git", "GitHub"],
+    "image": "/images/certifications/mouredev-git-github.jpg"
   },
   {
-    "title": "TypeScript profesional",
-    "issuer": "Platzi",
-    "date": "2023-01",
-    "url": null,
-    "tech": ["TypeScript"],
-    "image": null
+    "title": "Ultimate Docker",
+    "issuer": "Hola Mundo",
+    "date": "2024-11",
+    "url": "https://academia.holamundo.io/certificates/5x60gdvd5j",
+    "tech": ["Docker"],
+    "image": "/images/certifications/holamundo-ultimate-docker.jpg"
   },
   {
-    "title": "Diseño de APIs REST",
-    "issuer": "Udemy",
-    "date": "2022-05",
-    "url": "https://www.udemy.com/certificate/ejemplo2",
-    "tech": ["REST", "API"],
+    "title": "Curso completo de Python de la A a la Z",
+    "issuer": "Frogames",
+    "date": "2022-04",
+    "url": "https://certificates.frogamesformacion.com/a518d16c-8ae3-4224-bb12-7a3c06b7b472",
+    "tech": ["Python"],
     "image": null
   }
 ]
