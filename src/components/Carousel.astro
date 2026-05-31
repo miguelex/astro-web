@@ -1,0 +1,90 @@
+---
+/**
+ * Carrusel responsive sin dependencias.
+ * - Móvil: scroll-snap horizontal con "peek" de la siguiente card y dots de
+ *   paginación (estado activo vía IntersectionObserver, ~mínimo JS inline).
+ * - ≥sm: rejilla normal (las clases de columnas se pasan en `gridClass`).
+ * Cada hijo directo del slot es una "slide".
+ */
+interface Props {
+  /** Clases Tailwind de columnas para la rejilla en ≥sm (literal, para el JIT). */
+  gridClass?: string;
+}
+const { gridClass = "sm:grid-cols-2 lg:grid-cols-3" } = Astro.props;
+---
+
+<div class="relative" data-carousel>
+  <div
+    class:list={[
+      "carousel-track -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-1",
+      "sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0",
+      gridClass,
+    ]}
+    data-carousel-track
+  >
+    <slot />
+  </div>
+  <div class="mt-6 flex justify-center gap-2 sm:hidden" data-carousel-dots></div>
+</div>
+
+<style>
+  .carousel-track {
+    scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+  /* Una slide por pantalla. Ancho FIJO (no min-width) para que el texto no
+     estire la card hasta su max-content y se salga de pantalla. */
+  .carousel-track {
+    align-items: stretch; /* todas las cards a la misma altura */
+    scroll-padding-left: 1.25rem; /* alinea el snap con el px-5 del track */
+  }
+  .carousel-track > :global(*) {
+    flex: 0 0 auto;
+    width: 100%;
+    scroll-snap-align: start;
+  }
+  @media (min-width: 640px) {
+    .carousel-track > :global(*) {
+      width: auto; /* en rejilla manda el grid */
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
+    const track = root.querySelector<HTMLElement>("[data-carousel-track]");
+    const dotsWrap = root.querySelector<HTMLElement>("[data-carousel-dots]");
+    if (!track || !dotsWrap) return;
+
+    const slides = Array.from(track.children) as HTMLElement[];
+    if (slides.length <= 1) return;
+
+    slides.forEach((slide, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.setAttribute("aria-label", `Ir a la tarjeta ${i + 1}`);
+      dot.addEventListener("click", () => {
+        slide.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      });
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsWrap.children) as HTMLElement[];
+    const setActive = (idx: number) =>
+      dots.forEach((d, i) => (d.dataset.active = String(i === idx)));
+    setActive(0);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(slides.indexOf(e.target as HTMLElement));
+        });
+      },
+      { root: track, threshold: 0.6 },
+    );
+    slides.forEach((s) => io.observe(s));
+  });
+</script>

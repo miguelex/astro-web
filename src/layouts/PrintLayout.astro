@@ -21,7 +21,7 @@ const { title, lang } = Astro.props;
     <style is:global>
       @page {
         size: A4;
-        margin: 16mm 16mm;
+        margin: 10mm 15mm;
       }
       * {
         box-sizing: border-box;
@@ -30,17 +30,17 @@ const { title, lang } = Astro.props;
       }
       html {
         font-family: "Geist Variable", -apple-system, "Segoe UI", Arial, sans-serif;
-        font-size: 10.5pt;
-        line-height: 1.45;
+        font-size: 10pt;
+        line-height: 1.4;
         color: #111;
         background: #fff;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
       body {
-        max-width: 178mm;
+        max-width: 180mm;
         margin: 0 auto;
-        padding: 10mm 0;
+        padding: 0;
       }
       a {
         color: #111;
@@ -64,20 +64,31 @@ const { title, lang } = Astro.props;
         flex-wrap: wrap;
         gap: 4pt 14pt;
       }
-      .contact span::before {
-        content: "";
+      .contact a {
+        display: inline-flex;
+        align-items: center;
+        gap: 4pt;
+      }
+      .contact svg {
+        width: 10pt;
+        height: 10pt;
+        fill: #555;
+        flex-shrink: 0;
       }
       hr {
         border: none;
         border-top: 0.75pt solid #c9a227;
-        margin: 10pt 0;
+        margin: 8pt 0;
       }
+      /* Sin letter-spacing: un tracking amplio hace que el ATS lea los títulos
+         troceados letra a letra ("E X P E R I E N C I A") y no detecte las
+         secciones. Se mantiene el look con mayúsculas, color y borde. */
       h2 {
-        font-size: 10pt;
+        font-size: 9.5pt;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: normal;
         color: #8a6d1b;
-        margin: 14pt 0 7pt;
+        margin: 8pt 0 5pt;
         border-bottom: 0.5pt solid #ddd;
         padding-bottom: 3pt;
       }
@@ -85,7 +96,7 @@ const { title, lang } = Astro.props;
         color: #333;
       }
       .item {
-        margin-bottom: 9pt;
+        margin-bottom: 6pt;
         page-break-inside: avoid;
       }
       .item-head {
@@ -112,20 +123,20 @@ const { title, lang } = Astro.props;
         color: #444;
         margin-top: 2pt;
       }
+      /* Marcadores en flujo normal (sin position:absolute) para que el ATS
+         lea cada logro DENTRO de su empleo y en orden. */
       ul.bullets {
         margin-top: 3pt;
-        padding-left: 14pt;
-        list-style: none;
+        padding-left: 13pt;
+        list-style-position: outside;
+        list-style-type: "›  ";
       }
       ul.bullets li {
-        position: relative;
         color: #333;
         margin-top: 1.5pt;
+        padding-left: 2pt;
       }
-      ul.bullets li::before {
-        content: "›";
-        position: absolute;
-        left: -11pt;
+      ul.bullets li::marker {
         color: #c9a227;
         font-weight: 700;
       }
