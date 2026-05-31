@@ -24,11 +24,20 @@
   --border-strong: #cbd5e1;
   --fg: #0f172a;
   --fg-muted: #475569;
-  --fg-subtle: #7c8aa0;
-  --brand: #0284c7; /* azul-cian con contraste suficiente en claro */
+  --fg-subtle: #5e6d84; /* AA (>=4.5:1) sobre blanco y bg-subtle */
+  --brand: #0270ad; /* azul-cian con contraste AA en claro (texto y botón) */
   --brand-soft: #0ea5e9;
   --brand-fg: #f0f9ff;
   --ring: #0ea5e9;
+  /* Acentos de código (Developer.php) y categorías de skills — versión AA en claro */
+  --code-kw: #b41fc4;
+  --code-type: #0b76ad;
+  --code-class: #0a7d52;
+  --code-var: #b84a35;
+  --cat-tech: #0b76ad;
+  --cat-tools: #0e8068;
+  --cat-databases: #a4530b;
+  --cat-soft: #7b34d6;
   --grid: rgba(15, 23, 42, 0.05);
   --glow: rgba(56, 189, 248, 0.18);
   --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 30px rgba(15, 23, 42, 0.07);
@@ -48,6 +57,15 @@
   --brand-soft: #7dd3fc;
   --brand-fg: #07131f;
   --ring: #38bdf8;
+  /* Acentos brillantes para tema oscuro (suficiente contraste sobre slate) */
+  --code-kw: #d946ef;
+  --code-type: #0ea5e9;
+  --code-class: #10b981;
+  --code-var: #e2725b;
+  --cat-tech: #38bdf8;
+  --cat-tools: #2dd4bf;
+  --cat-databases: #f59e0b;
+  --cat-soft: #a78bfa;
   --grid: rgba(226, 237, 246, 0.045);
   --glow: rgba(56, 189, 248, 0.2);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 18px 50px rgba(0, 0, 0, 0.4);

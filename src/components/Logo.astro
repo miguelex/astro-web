@@ -13,8 +13,16 @@ interface Props {
   size?: number;
   mono?: boolean;
   title?: string;
+  /** Si va junto a texto visible (Header/Footer), marcarlo decorativo para evitar nombre accesible duplicado. */
+  decorative?: boolean;
 }
-const { class: className, size = 40, mono = false, title = "Miguel Delgado" } = Astro.props;
+const {
+  class: className,
+  size = 40,
+  mono = false,
+  title = "Miguel Delgado",
+  decorative = false,
+} = Astro.props;
 const uid = "lg" + Math.random().toString(36).slice(2, 8);
 const stroke = mono ? "currentColor" : `url(#${uid}-s)`;
 ---
@@ -25,8 +33,9 @@ const stroke = mono ? "currentColor" : `url(#${uid}-s)`;
   height={size}
   viewBox="0 0 48 48"
   fill="none"
-  role="img"
-  aria-label={title}
+  role={decorative ? undefined : "img"}
+  aria-label={decorative ? undefined : title}
+  aria-hidden={decorative ? "true" : undefined}
   xmlns="http://www.w3.org/2000/svg"
 >
   {

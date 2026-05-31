@@ -8,29 +8,36 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 type Cat = "tech" | "tools" | "databases" | "soft";
-const meta: Record<Cat, { key: UIKey; n: string; color: string; icon: string }> = {
+// `color` (var theme-aware) alimenta los adornos (glow, borde, fondo) vía --cat.
+// `text` es una clase literal Tailwind para texto/número: axe la resuelve bien
+// (a diferencia de la cadena var(--cat) inline, que no sabe leer).
+const meta: Record<Cat, { key: UIKey; n: string; color: string; text: string; icon: string }> = {
   tech: {
     key: "section.skills.tech",
     n: "01",
-    color: "#38bdf8",
+    color: "var(--cat-tech)",
+    text: "text-[var(--cat-tech)]",
     icon: "M8 6 2 12l6 6M16 6l6 6-6 6M14 4l-4 16",
   },
   tools: {
     key: "section.skills.tools",
     n: "02",
-    color: "#2dd4bf",
+    color: "var(--cat-tools)",
+    text: "text-[var(--cat-tools)]",
     icon: "M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6Z",
   },
   databases: {
     key: "section.skills.databases",
     n: "03",
-    color: "#f59e0b",
+    color: "var(--cat-databases)",
+    text: "text-[var(--cat-databases)]",
     icon: "M12 3c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3ZM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3",
   },
   soft: {
     key: "section.skills.soft",
     n: "04",
-    color: "#a78bfa",
+    color: "var(--cat-soft)",
+    text: "text-[var(--cat-soft)]",
     icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8",
   },
 };
@@ -64,7 +71,7 @@ const meta: Record<Cat, { key: UIKey; n: string; color: string; icon: string }> 
               </svg>
             </span>
             <h3 class="font-display text-lg font-medium">{t(m.key)}</h3>
-            <span class="ml-auto font-mono text-xs" style="color: var(--cat)">
+            <span class:list={["ml-auto font-mono text-xs", m.text]}>
               {m.n}
             </span>
           </div>
@@ -74,8 +81,11 @@ const meta: Record<Cat, { key: UIKey; n: string; color: string; icon: string }> 
               const iconPath = techIconPath(item);
               return (
                 <li
-                  class="skill-badge inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
-                  style="color: color-mix(in srgb, var(--cat) 88%, var(--fg)); border-color: color-mix(in srgb, var(--cat) 30%, transparent); background: color-mix(in srgb, var(--cat) 9%, transparent)"
+                  class:list={[
+                    "skill-badge inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm",
+                    m.text,
+                  ]}
+                  style="border-color: color-mix(in srgb, var(--cat) 30%, transparent); background: color-mix(in srgb, var(--cat) 9%, transparent)"
                 >
                   {iconPath ? (
                     <svg class="size-3.5 opacity-90" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
