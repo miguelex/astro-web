@@ -1,0 +1,83 @@
+---
+title: "php-template: cuando decides dejar de repetirte"
+description: "Después de meses de desarrollo, publico mi primera herramienta open source: una plantilla PHP 8.2 con arquitectura MVC propia, tooling serio y soporte para agentes IA."
+pubDate: 2026-06-08
+lang: "es"
+tags: ["php", "opensource", "herramientas"]
+draft: false
+---
+
+Hay un momento, después de varios años desarrollando, en el que te das cuenta de que llevas meses repitiendo los mismos pasos cada vez que arrancas un proyecto nuevo. Crear la estructura de carpetas, configurar el autoloader, montar el sistema de rutas, añadir el análisis estático, configurar los tests...
+
+El mismo ritual. Una y otra vez.
+
+Yo llegué a ese punto hace unos meses. Y en lugar de resignarme, decidí hacer algo al respecto.
+
+## El origen: un curso y mucha deuda técnica acumulada
+
+La base inicial fue el mini-framework de Juan Pablo De la Torre Valdez, un desarrollador y docente al que le tengo un agradecimiento enorme. Sus materiales me enseñaron a pensar en MVC de forma práctica, sin abstracciones innecesarias. Si llevas tiempo en el mundo PHP hispanohablante, probablemente sabes de quién hablo.
+
+Pero con el tiempo, mis proyectos reales fueron pidiendo más. El framework original usaba `mysqli` con escape manual de strings. No tenía análisis estático, ni tests, ni migraciones propias. Cada proyecto que arrancaba desde esa base terminaba con las mismas extensiones manuales, escritas deprisa y con deuda técnica acumulada.
+
+Así que empecé a construir encima. Y a reconstruir. Y a reconstruir de nuevo cuando algo no me convencía.
+
+Lo que empezó como un fin de semana de limpieza se convirtió en varios meses de trabajo. Hoy ese trabajo está publicado como **php-template**, disponible para cualquiera que lo quiera usar.
+
+## Qué es y qué no es
+
+**php-template** es una plantilla base para proyectos PHP 8.2 con arquitectura MVC propia. No es un framework. No pretende competir con Laravel ni con Symfony — los uso cuando el proyecto lo justifica.
+
+Es para esa categoría de proyectos donde el overhead de un framework completo no está justificado: módulos de negocio específicos, integraciones con sistemas legacy, proyectos donde quieres control total sobre cada capa.
+
+Arrancarlo es tan simple como:
+
+```bash
+composer create-project miguelex/php-template mi-proyecto
+```
+
+## Lo que incluye (y por qué cada cosa)
+
+**PDO con prepared statements** — no es opcional en 2025. La interpolación directa de variables en SQL, aunque con escape manual, es un patrón que invita a errores. Primer cambio que hice, sin discusión.
+
+**PHPStan nivel 6** — empecé en nivel 9, el máximo. Error. Nivel 9 en un proyecto real genera decenas de avisos sobre código que no controlas. Bajé a 6: detecta los errores importantes sin el ruido. Se puede subir gradualmente.
+
+**PHPUnit 11 + Pest 3** — los dos, porque sirven propósitos distintos. PHPUnit para tests unitarios e integración, Pest para feature tests con su sintaxis más expresiva.
+
+**Gulp 5 y Vite 6** — ambos disponibles, se elige al crear el proyecto. Gulp para proyectos con JS simple. Vite cuando el frontend empieza a crecer. Genera imágenes en WebP y AVIF automáticamente.
+
+**Playwright para tests E2E** — arranca el servidor PHP solo antes de correr los tests. Cuando el CI se puso en verde por primera vez con los tests E2E pasando, fue una de esas pequeñas victorias que se sienten desproporcionadamente bien.
+
+## La parte que no tenía planeada: los agentes IA
+
+Cuando empecé el proyecto no tenía pensado incluir soporte explícito para agentes IA. Lo añadí después de usarlos durante meses en proyectos reales y ver siempre el mismo problema: el agente hace cosas que no debería, toca ficheros que no debería tocar, añade complejidad donde nadie la pidió.
+
+El problema no es el agente — es la falta de contexto.
+
+La solución fue crear un directorio `.agent/` con ficheros que Claude Code, Cursor y GitHub Copilot leen automáticamente:
+
+- `AGENTS.md` — qué puede tocar, qué no puede tocar, comandos disponibles
+- `WORKFLOW.md` — cómo debe actuar: planificar antes de codificar, cambios mínimos, verificar antes de declarar hecho
+- `CONVENTIONS.md` — PSR-12, BEM, Conventional Commits
+- `tasks/lessons.md` — errores pasados del proyecto y reglas para no repetirlos
+
+Este último es el más interesante. Cuando el agente comete un error y lo corriges, actualiza `lessons.md` con lo aprendido. Con el tiempo ese fichero se convierte en memoria acumulativa del proyecto. No sé si es el futuro del desarrollo con IA, pero en mis proyectos ha funcionado.
+
+## Lo que aprendí construyéndolo
+
+Después de 15 años desarrollando, pensaba que construir una plantilla sería relativamente sencillo. No lo fue.
+
+No por la complejidad técnica — sino porque cada decisión que normalmente delegas en el framework tienes que tomarla tú. ¿PDO o mysqli? ¿PHPStan nivel 6 o 9? ¿Gulp o Vite? ¿ActiveRecord o Repository? ¿Commitear el `composer.lock` o no?
+
+Cada una de esas preguntas tiene una respuesta correcta que depende del contexto. Y entender el contexto obliga a entender el problema de verdad, no solo a copiar lo que hace todo el mundo.
+
+Y cuando algo falla — el CI lo garantiza — tienes que entender por qué. No aplicar el fix que sugiere Stack Overflow y seguir adelante.
+
+Eso, más que cualquier línea de código, es lo que más vale de haberlo construido.
+
+---
+
+El proyecto está en GitHub con documentación completa en español e inglés, y disponible en Packagist. Las contribuciones, PRs e issues son bienvenidos.
+
+- 🔗 [github.com/miguelex/php-template](https://github.com/miguelex/php-template)
+- 📦 [packagist.org/packages/miguelex/php-template](https://packagist.org/packages/miguelex/php-template)
+- 📝 [Artículo técnico completo en Dev.to](https://dev.to/miguelex/i-built-a-modern-php-82-mvc-template-with-full-tooling-and-ai-agent-support)

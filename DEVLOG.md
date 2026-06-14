@@ -108,3 +108,60 @@ Registro cronológico para mantener continuidad entre equipos (trabajo ↔ casa)
 ### Estado
 - Build OK (17 páginas + 2 PDFs), `astro check` 0 errores. Diseño validado por el
   usuario. Remoto GitHub: `github.com/miguelex/astro-web` (cuenta miguelex vía gh).
+
+---
+
+## 2026-06-14 — Sesión 4 (PC casa): plan de mejora (quick wins + SEO/UX)
+
+### Hecho
+- **Trailing slash unificado**: `trailingSlash: "always"` en `astro.config.mjs` y
+  barra final en TODOS los enlaces internos (Header desktop+móvil, Footer, LangToggle
+  con normalizador, HomeSections, BlogList, BlogArticle, SocialButtons preview).
+  Evita el 301 de `DirectorySlash` de Apache. Canonical y enlaces ya coinciden.
+- **Quitado el meta `generator`** (Astro vX.Y.Z) de `BaseLayout.astro` — no expone
+  la versión del framework.
+- **JSON-LD `Person` enriquecido** (`JsonLd.astro`): dirección estructurada real
+  (`addressLocality`/`addressRegion`/`addressCountry`), `image` y `knowsAbout`.
+  (El bloque Person ya existía; el punto del plan estaba prácticamente cubierto.)
+- **Contacto directo**: email visible + icono `mailto:` en el Footer.
+- **Proyecto destacado nuevo: dpeage** (sustituye al festival de música en
+  `projects.json`): Next.js + React + TypeScript en Vercel, repo privado, demo
+  `https://dpeage.com`, `year 2026`. Iconos Next.js/Vercel añadidos a `techIcons.ts`.
+- **2.º post del blog**: `src/content/blog/es/php-template.mdx` (php-template).
+- Verificado: `astro check` 0 errores; `npm run build:site` 18 páginas; canonical,
+  enlaces y ausencia de `generator` confirmados en el HTML generado.
+
+### Pendiente / siguientes pasos
+- [ ] **Imagen de dpeage**: colocar la captura real en
+      `public/images/projects/dpeage.jpg` (el JSON ya la referencia; hasta entonces
+      la tarjeta muestra imagen rota).
+- [ ] **og:image por página** (Home/Proyectos/Blog/CV): requiere generar las
+      imágenes (p. ej. `astro-og-canvas`/satori en build). Pendiente de decidir.
+- [ ] **Imágenes de proyectos a `<Image>`** (WebP/AVIF + srcset): implica mover las
+      capturas a `src/assets` e importarlas (vía `import.meta.glob`). Pendiente.
+- [ ] **Medir Core Web Vitals reales** (Lighthouse/PSI sobre la home).
+- [ ] **Responsive real**: revisar en móvil el snippet `Developer.php` (overflow) y
+      la rejilla de proyectos.
+- Nota: cabeceras de seguridad (`.htaccess`: HSTS/CSP/X-Frame-Options/…) y
+  `robots.txt`→`sitemap` ya estaban correctos; `aria-label` en iconos ya presentes.
+  El enlace "Blog" en `/en` → `/blog` se mantiene a propósito (blog solo en español).
+
+### 2026-06-14 — Sesión 4b (revisión del usuario)
+- **Festival de música restaurado** como proyecto normal (`featured: false`); solo
+  salía de *destacados*, no debía desaparecer. Home muestra 3 destacados
+  (php-template, asinco, dpeage); `/proyectos` muestra los 6.
+- **Imágenes generadas con Playwright** (`scripts/generate-images.mjs`,
+  `npm run images`):
+  - `dpeage.jpg`: captura real de `https://dpeage.com` (1440×900), igual que el
+    resto de proyectos.
+  - Portadas del blog `public/images/blog/<slug>.jpg` (plantilla on-brand: gradiente
+    determinista + Fraunces + glyph). Helper `postCover()` en `lib/blog.ts`; se usan
+    en el listado (con fallback a gradiente), en la cabecera del artículo y como
+    `og:image` del post (→ og:image por página, otro punto del plan cubierto).
+- **Paginación 9/página (3×3)** en proyectos y certificaciones (es/en) con
+  `paginate()` y rutas `[...page].astro`. Certificaciones pasa de 2 a 3 columnas.
+  Componente reutilizable `Pagination.astro`. (Con 6 ítems hoy hay 1 sola página.)
+- **Bug i18n arreglado** (preexistente): el conmutador de idioma en `/proyectos` y
+  `/certificaciones` iba a `/en/proyectos` (404). `LangToggle` ahora traduce el
+  primer segmento del slug (proyectos↔projects, certificaciones↔certifications,
+  legal/privacidad) conservando nº de página y slug de post.

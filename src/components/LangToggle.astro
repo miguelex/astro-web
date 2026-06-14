@@ -1,26 +1,39 @@
 ---
-import { getLangFromUrl, alternateUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const target = lang === "es" ? "en" : "es";
 
-// Rutas cuyo slug difiere entre idiomas (no sirve el mapeo genérico).
-const slugMap: Record<string, string> = {
-  "/aviso-legal": "/en/legal-notice",
-  "/en/legal-notice": "/aviso-legal",
-  "/privacidad": "/en/privacy",
-  "/en/privacy": "/privacidad",
+// Rutas cuyo primer segmento (slug) difiere entre idiomas. El resto de
+// segmentos (nº de página, slug de post...) se conserva tal cual.
+const slugByEn: Record<string, string> = {
+  proyectos: "projects",
+  certificaciones: "certifications",
+  "aviso-legal": "legal-notice",
+  privacidad: "privacy",
 };
+const slugByEs: Record<string, string> = Object.fromEntries(
+  Object.entries(slugByEn).map(([es, en]) => [en, es]),
+);
 
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+// Segmentos en idioma "neutro" (sin el prefijo /en).
+const segments = Astro.url.pathname.split("/").filter(Boolean);
+if (lang === "en") segments.shift();
+
 let href: string;
-if (slugMap[path]) {
-  href = slugMap[path];
-} else if (target === "en" && path.startsWith("/blog")) {
+if (target === "en" && segments[0] === "blog") {
   // El blog solo existe en español; al pasar a inglés vamos a la home inglesa.
-  href = "/en";
+  href = "/en/";
 } else {
-  href = alternateUrl(Astro.url, target);
+  // Traduce el primer segmento si tiene equivalente en el idioma destino.
+  const translated = [...segments];
+  if (translated[0]) {
+    const map = target === "en" ? slugByEn : slugByEs;
+    translated[0] = map[translated[0]] ?? translated[0];
+  }
+  const prefix = target === "en" ? "/en" : "";
+  const path = translated.join("/");
+  href = path ? `${prefix}/${path}/` : `${prefix}/`;
 }
 ---
 

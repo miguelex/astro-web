@@ -34,6 +34,23 @@
     "year": "2022"
   },
   {
+    "slug": "dpeage",
+    "title": {
+      "es": "dpeage — seguridad y privacidad",
+      "en": "dpeage — security & privacy"
+    },
+    "description": {
+      "es": "Web de dpeage, un modelo de utilidad centrado en la seguridad y la privacidad. Desarrollada este año con Next.js (React + TypeScript) y desplegada en Vercel, con foco en rendimiento y buenas prácticas de protección de datos.",
+      "en": "Website for dpeage, a utility model focused on security and privacy. Built this year with Next.js (React + TypeScript) and deployed on Vercel, with a focus on performance and solid data-protection practices."
+    },
+    "image": "/images/projects/dpeage.jpg",
+    "tech": ["Next.js", "React", "TypeScript", "Vercel"],
+    "repo": null,
+    "demo": "https://dpeage.com",
+    "featured": true,
+    "year": "2026"
+  },
+  {
     "slug": "festival-musica",
     "title": {
       "es": "Web de festival de música",
@@ -47,7 +64,7 @@
     "tech": ["HTML5", "Sass", "Gulp", "JavaScript"],
     "repo": "https://github.com/miguelex/DWC/tree/main/FestivalMusica",
     "demo": "https://festivalmusicadwc.netlify.app/",
-    "featured": true,
+    "featured": false,
     "year": "2023"
   },
   {

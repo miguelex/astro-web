@@ -1,9 +1,17 @@
 ---
+import type { Page } from "astro";
+import type { Certification } from "../types";
 import PageHeader from "./PageHeader.astro";
-import { sortedCertifications } from "../data";
+import Pagination from "./Pagination.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { issuerStyle } from "../lib/issuers";
 import { techIconPath } from "../lib/techIcons";
+
+interface Props {
+  page: Page<Certification>;
+  base: string;
+}
+const { page, base } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,9 +25,9 @@ const fmt = (d: string) =>
 <PageHeader title={t("certifications.title")} subtitle={t("certifications.subtitle")} kicker={t("kicker.learning")} />
 
 <div class="mx-auto max-w-5xl px-5 py-16">
-  <ul class="grid gap-6 sm:grid-cols-2">
+  <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {
-      sortedCertifications.map((cert) => {
+      page.data.map((cert) => {
         const is = issuerStyle(cert.issuer);
         return (
           <li
@@ -107,4 +115,5 @@ const fmt = (d: string) =>
       })
     }
   </ul>
+  <Pagination page={page} base={base} />
 </div>

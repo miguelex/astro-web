@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import CertificationsContent from "../../../components/CertificationsContent.astro";
+import { sortedCertifications } from "../../../data";
+
+export const getStaticPaths = (({ paginate }) =>
+  paginate(sortedCertifications, { pageSize: 9 })) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BaseLayout
+  title="Certifications · Miguel Ángel Delgado"
+  description="Continuous learning, courses and credentials in software development."
+>
+  <CertificationsContent page={page} base="/en/certifications" />
+</BaseLayout>

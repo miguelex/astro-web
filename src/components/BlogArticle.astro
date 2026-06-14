@@ -1,6 +1,6 @@
 ---
 import type { Post } from "../lib/blog";
-import { formatDate } from "../lib/blog";
+import { formatDate, postSlug, postCover } from "../lib/blog";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 interface Props {
@@ -9,16 +9,29 @@ interface Props {
 const { post } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const cover = postCover(postSlug(post.id));
 ---
 
 <article class="mx-auto max-w-2xl px-5 py-16">
   <a
-    href="/blog"
+    href="/blog/"
     class="group inline-flex items-center gap-1.5 font-mono text-sm text-[var(--fg-muted)] transition-colors hover:text-[var(--brand)]"
   >
     <span class="inline-block transition-transform group-hover:-translate-x-1">←</span>
     {t("blog.back")}
   </a>
+
+  {cover && (
+    <img
+      src={cover}
+      alt={post.data.title}
+      width="1200"
+      height="600"
+      decoding="async"
+      class="anim mt-8 aspect-[16/8] w-full rounded-2xl border border-[var(--border)] object-cover"
+      style="--d:40ms"
+    />
+  )}
 
   <header class="anim mt-8 border-b border-[var(--border)] pb-8" style="--d:60ms">
     <div class="flex flex-wrap items-center gap-3 font-mono text-xs text-[var(--fg-subtle)]">

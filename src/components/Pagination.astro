@@ -1,0 +1,70 @@
+---
+import type { Page } from "astro";
+import { getLangFromUrl } from "../i18n/utils";
+
+interface Props {
+  /** Objeto Page de Astro (paginate). */
+  page: Page;
+  /** Ruta base sin barra final ni número, p. ej. "/proyectos" o "/en/projects". */
+  base: string;
+}
+const { page, base } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+// trailingSlash: "always" — la 1.ª página es la base; el resto lleva número.
+const href = (n: number) => (n <= 1 ? `${base}/` : `${base}/${n}/`);
+const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+
+const prevLabel = lang === "es" ? "Anterior" : "Previous";
+const nextLabel = lang === "es" ? "Siguiente" : "Next";
+const ariaLabel = lang === "es" ? "Paginación" : "Pagination";
+---
+
+{
+  page.lastPage > 1 && (
+    <nav class="mt-12 flex items-center justify-center gap-2" aria-label={ariaLabel}>
+      <a
+        href={page.url.prev ?? "#"}
+        class:list={[
+          "grid h-9 min-w-9 place-items-center rounded-lg border px-3 font-mono text-sm transition-colors",
+          page.url.prev
+            ? "border-[var(--border-strong)] text-[var(--fg-muted)] hover:border-[var(--brand)] hover:text-[var(--brand)]"
+            : "pointer-events-none border-[var(--border)] text-[var(--fg-subtle)] opacity-40",
+        ]}
+        aria-disabled={!page.url.prev}
+        aria-label={prevLabel}
+      >
+        ←
+      </a>
+
+      {pages.map((n) => (
+        <a
+          href={href(n)}
+          aria-current={n === page.currentPage ? "page" : undefined}
+          class:list={[
+            "grid h-9 min-w-9 place-items-center rounded-lg border px-3 font-mono text-sm transition-colors",
+            n === page.currentPage
+              ? "border-[var(--brand)] bg-[var(--brand)] text-[var(--brand-fg)]"
+              : "border-[var(--border-strong)] text-[var(--fg-muted)] hover:border-[var(--brand)] hover:text-[var(--brand)]",
+          ]}
+        >
+          {n}
+        </a>
+      ))}
+
+      <a
+        href={page.url.next ?? "#"}
+        class:list={[
+          "grid h-9 min-w-9 place-items-center rounded-lg border px-3 font-mono text-sm transition-colors",
+          page.url.next
+            ? "border-[var(--border-strong)] text-[var(--fg-muted)] hover:border-[var(--brand)] hover:text-[var(--brand)]"
+            : "pointer-events-none border-[var(--border)] text-[var(--fg-subtle)] opacity-40",
+        ]}
+        aria-disabled={!page.url.next}
+        aria-label={nextLabel}
+      >
+        →
+      </a>
+    </nav>
+  )
+}

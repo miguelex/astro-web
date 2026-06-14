@@ -7,20 +7,20 @@ import { profile } from "../data";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const home = lang === "es" ? "/" : "/en";
+const home = lang === "es" ? "/" : "/en/";
 
-// El blog es siempre en español (/blog) desde ambos idiomas.
+// El blog es siempre en español (/blog/) desde ambos idiomas.
 const nav =
   lang === "es"
     ? [
-        { href: "/proyectos", key: "nav.projects" as const },
-        { href: "/certificaciones", key: "nav.certifications" as const },
-        { href: "/blog", key: "nav.blog" as const },
+        { href: "/proyectos/", key: "nav.projects" as const },
+        { href: "/certificaciones/", key: "nav.certifications" as const },
+        { href: "/blog/", key: "nav.blog" as const },
       ]
     : [
-        { href: "/en/projects", key: "nav.projects" as const },
-        { href: "/en/certifications", key: "nav.certifications" as const },
-        { href: "/blog", key: "nav.blog" as const },
+        { href: "/en/projects/", key: "nav.projects" as const },
+        { href: "/en/certifications/", key: "nav.certifications" as const },
+        { href: "/blog/", key: "nav.blog" as const },
       ];
 
 const path = Astro.url.pathname.replace(/\/$/, "");
@@ -57,7 +57,7 @@ const isActive = (href: string) => {
       }
       <span class="mx-1 h-5 w-px bg-[var(--border)]"></span>
       <a
-        href={lang === "es" ? "/cv" : "/en/cv"}
+        href={lang === "es" ? "/cv/" : "/en/cv/"}
         class="rounded-lg border border-[var(--border-strong)] px-3 py-1.5 text-sm font-medium transition-colors hover:border-[var(--brand)] hover:text-[var(--brand)]"
       >
         {t("nav.cv")}
@@ -113,7 +113,7 @@ const isActive = (href: string) => {
     aria-label={t("nav.menu")}
   >
     {
-      [...nav, { href: lang === "es" ? "/cv" : "/en/cv", key: "nav.cv" as const }].map((item) => (
+      [...nav, { href: lang === "es" ? "/cv/" : "/en/cv/", key: "nav.cv" as const }].map((item) => (
         <a
           href={item.href}
           class="block rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--fg-muted)] hover:bg-[var(--bg-subtle)] hover:text-[var(--brand)]"

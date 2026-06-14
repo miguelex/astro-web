@@ -8,6 +8,9 @@ import tailwindcss from "@tailwindcss/vite";
 // Es necesario para sitemap, canónicos y hreflang.
 export default defineConfig({
   site: "https://miguedelgado.dev",
+  // URLs canónicas con barra final (formato "directory"); los enlaces internos
+  // también la llevan para evitar el 301 de DirectorySlash de Apache.
+  trailingSlash: "always",
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],

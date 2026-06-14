@@ -1,7 +1,19 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { Lang } from "../i18n/ui";
 
 export type Post = CollectionEntry<"blog">;
+
+/**
+ * Devuelve la ruta pública de la portada del post (`/images/blog/<slug>.jpg`)
+ * si la imagen existe (la genera `npm run images`), o `null` para usar el
+ * gradiente de respaldo. Se resuelve en build con `fs`.
+ */
+export function postCover(slug: string): string | null {
+  const rel = `images/blog/${slug}.jpg`;
+  return existsSync(join(process.cwd(), "public", rel)) ? `/${rel}` : null;
+}
 
 /** Posts de un idioma, sin borradores en producción, ordenados por fecha desc. */
 export async function getPosts(lang: Lang): Promise<Post[]> {

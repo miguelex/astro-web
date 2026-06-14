@@ -13,10 +13,21 @@ const person = {
   description: tField(profile.summary, lang),
   email: `mailto:${profile.email}`,
   url: site.href,
+  image: new URL("/og/default.png", site).href,
   address: {
     "@type": "PostalAddress",
-    addressCountry: tField(profile.location, lang),
+    addressLocality: "Palos de la Frontera",
+    addressRegion: "Huelva",
+    addressCountry: lang === "es" ? "España" : "Spain",
   },
+  knowsAbout: [
+    "PHP",
+    "Laravel",
+    "Symfony",
+    "MVC",
+    "Software architecture",
+    "Fullstack web development",
+  ],
   sameAs: [profile.social.linkedin, profile.social.github].filter(Boolean),
 };
 ---

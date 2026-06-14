@@ -13,6 +13,8 @@ const exportKey: Record<string, string> = {
   JavaScript: "siJavascript",
   TypeScript: "siTypescript",
   "Vue.js": "siVuedotjs",
+  "Next.js": "siNextdotjs",
+  Vercel: "siVercel",
   React: "siReact",
   Bootstrap: "siBootstrap",
   Java: "siOpenjdk",

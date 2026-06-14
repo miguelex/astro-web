@@ -60,6 +60,11 @@ Textos de interfaz (menús, botones): `src/i18n/ui.ts`.
 ### Añadir un proyecto
 Añade un objeto a `projects.json` y coloca su imagen en `public/images/projects/`
 (referénciala con ruta absoluta, p. ej. `/images/projects/mi-proyecto.webp`).
+Las imágenes de proyectos son **capturas de la web en vivo** (1440×900). Para
+generarlas, añade `{ url, out }` a `projectShots` en `scripts/generate-images.mjs`
+y lanza `npm run images`. La página `/proyectos` está **paginada** (9 por página,
+rejilla 3×3) vía `src/pages/proyectos/[...page].astro` (e inglés en
+`src/pages/en/projects/[...page].astro`). Igual para certificaciones.
 
 ### Añadir un post al blog
 El blog es **solo en español** (`src/content/blog/es/`). Desde la web en inglés,
@@ -77,6 +82,11 @@ draft: false       # true = oculto en producción
 ```
 La URL sale del nombre del fichero: `/blog/mi-post` (o `/en/blog/...`).
 
+La **portada** de cada post se genera con `npm run images` en
+`public/images/blog/<slug>.jpg` (plantilla on-brand). Si no existe, la tarjeta usa
+un gradiente determinista de respaldo. La portada se usa también como `og:image`
+del post y en la cabecera del artículo (`lib/blog.ts` → `postCover`).
+
 ### CV en PDF (ATS-friendly)
 El PDF real se genera en el build con Playwright a partir de las páginas
 `/cv-pdf` y `/en/cv-pdf` (layout `PrintLayout.astro` + `CvDocument.astro`, ambos
@@ -92,7 +102,12 @@ npm run dev      # desarrollo en http://localhost:4321
 npm run build    # build estático en dist/
 npm run preview  # previsualizar el build
 npm run check    # comprobación de tipos (astro check)
+npm run images   # (re)genera capturas de proyectos y portadas del blog (Playwright)
 ```
+
+> `npm run images` necesita Chromium (`npx playwright install chromium`) y, para las
+> capturas de proyectos, que la web en vivo esté accesible. Las imágenes resultantes
+> se versionan en `public/images/`, así que no forma parte del `build`.
 
 ## Convenciones / decisiones
 

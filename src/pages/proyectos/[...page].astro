@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectsContent from "../../components/ProjectsContent.astro";
+import { projects } from "../../data";
+
+export const getStaticPaths = (({ paginate }) =>
+  paginate(projects, { pageSize: 9 })) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BaseLayout
+  title="Proyectos · Miguel Ángel Delgado"
+  description="Una selección de proyectos de desarrollo web fullstack con PHP, Laravel y más."
+>
+  <ProjectsContent page={page} base="/proyectos" />
+</BaseLayout>

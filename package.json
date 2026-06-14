@@ -9,6 +9,7 @@
     "build": "astro build && node scripts/generate-cv-pdf.mjs",
     "build:site": "astro build",
     "pdf": "node scripts/generate-cv-pdf.mjs",
+    "images": "node scripts/generate-images.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"

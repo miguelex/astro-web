@@ -6,7 +6,7 @@ const t = useTranslations(lang);
 // El PDF real solo existe tras `npm run build` (lo genera Playwright). En dev
 // ese archivo no está, así que el botón abre la página imprimible como fallback.
 const cvPdf = lang === "es" ? "/cv.pdf" : "/cv.en.pdf";
-const cvPreview = lang === "es" ? "/cv-pdf" : "/en/cv-pdf";
+const cvPreview = lang === "es" ? "/cv-pdf/" : "/en/cv-pdf/";
 const cvHref = import.meta.env.PROD ? cvPdf : cvPreview;
 ---
 

@@ -2,7 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogArticle from "../../components/BlogArticle.astro";
-import { postSlug } from "../../lib/blog";
+import { postSlug, postCover } from "../../lib/blog";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => {
@@ -17,9 +17,15 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const cover = postCover(postSlug(post.id));
 ---
 
-<BaseLayout title={`${post.data.title} · Blog`} description={post.data.description} type="article">
+<BaseLayout
+  title={`${post.data.title} · Blog`}
+  description={post.data.description}
+  image={cover ?? undefined}
+  type="article"
+>
   <BlogArticle post={post}>
     <Content />
   </BlogArticle>
